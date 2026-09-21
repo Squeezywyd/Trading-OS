@@ -42,6 +42,14 @@ export async function getTrade(id: string) {
   return data as TradeWithR | null;
 }
 
+/** Raw row from the base table (all columns non-null as declared) — used to seed edit forms. */
+export async function getTradeForEdit(id: string) {
+  const supabase = await createClient();
+  const { data, error } = await supabase.from("trades").select("*").eq("id", id).maybeSingle();
+  if (error) throw error;
+  return data;
+}
+
 /** Shared payload builder: recomputes risk/result server-side and resolves auto-links. */
 async function buildTradePayload(values: TradeFormValues, userId: string) {
   const riskUsd =
