@@ -68,13 +68,16 @@
   --border: oklch(0.9 0.005 260);
   --input: oklch(0.9 0.005 260);
   --ring: oklch(0.72 0.16 215);
-  --profit: oklch(0.62 0.15 155);
-  --loss: oklch(0.6 0.21 25);
+  /* Diverging P&L pair, validated with the dataviz skill's CVD checker
+     (deutan ΔE 8.6, normal-vision ΔE 32.0 — both clear the floors) — do not
+     hand-tune without re-running scripts/validate_palette.js. */
+  --profit: #059669;
+  --loss: #dc2626;
   --violet: oklch(0.62 0.19 300);
   --chart-1: oklch(0.72 0.16 215);
   --chart-2: oklch(0.62 0.19 300);
-  --chart-3: oklch(0.62 0.15 155);
-  --chart-4: oklch(0.6 0.21 25);
+  --chart-3: var(--profit);
+  --chart-4: var(--loss);
   --chart-5: oklch(0.6 0.02 260);
   --radius: 0.875rem;
   --sidebar: oklch(0.98 0.003 260);
@@ -106,13 +109,14 @@
   --border: oklch(1 0 0 / 8%);
   --input: oklch(1 0 0 / 10%);
   --ring: oklch(0.85 0.16 200 / 60%);
-  --profit: oklch(0.78 0.17 155);
-  --loss: oklch(0.65 0.2 25);
+  /* Same validated pair, dark-mode steps (deutan ΔE 9.6, normal-vision ΔE 31.7). */
+  --profit: #059669;
+  --loss: #ef4444;
   --violet: oklch(0.7 0.19 300);
   --chart-1: oklch(0.85 0.16 200);
   --chart-2: oklch(0.7 0.19 300);
-  --chart-3: oklch(0.78 0.17 155);
-  --chart-4: oklch(0.65 0.2 25);
+  --chart-3: var(--profit);
+  --chart-4: var(--loss);
   --chart-5: oklch(0.65 0.02 260);
   --sidebar: oklch(0.13 0.012 264);
   --sidebar-foreground: oklch(0.96 0.006 260);
