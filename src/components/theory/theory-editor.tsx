@@ -53,19 +53,24 @@ export function TheoryEditor({ doc }: { doc: Tables<"theory_docs"> }) {
 
   return (
     <Sheet open={open} onOpenChange={setOpen}>
-      <SheetTrigger render={
-        <Button variant="outline" size="sm">
-          <Pencil />
-          Edit
-        </Button>
-      } />
+      <SheetTrigger
+        render={
+          <Button variant="outline" size="sm">
+            <Pencil />
+            Edit
+          </Button>
+        }
+      />
       <SheetContent side="right" className="w-full sm:max-w-2xl">
         <SheetHeader>
           <SheetTitle>Edit — {doc.title}</SheetTitle>
           <SheetDescription>Changes save to your Theory Library immediately.</SheetDescription>
         </SheetHeader>
 
-        <form onSubmit={handleSubmit(onSubmit)} className="flex flex-1 flex-col gap-4 overflow-y-auto px-4">
+        <form
+          onSubmit={handleSubmit(onSubmit)}
+          className="flex flex-1 flex-col gap-4 overflow-y-auto px-4"
+        >
           <Field>
             <FieldLabel htmlFor="title">Title</FieldLabel>
             <FieldContent>

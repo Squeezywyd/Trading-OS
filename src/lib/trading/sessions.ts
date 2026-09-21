@@ -29,16 +29,58 @@ export const SESSION_WINDOWS: TimeWindow[] = [
 ];
 
 export const KILLZONE_WINDOWS: TimeWindow[] = [
-  { key: "asian-kz", label: "Asian Killzone", startMinute: M(20), endMinute: M(24), kind: "killzone" },
-  { key: "london-kz", label: "London Killzone", startMinute: M(2), endMinute: M(5), kind: "killzone" },
-  { key: "ny-am-kz", label: "NY AM Killzone", startMinute: M(7), endMinute: M(10), kind: "killzone" },
-  { key: "ny-pm-kz", label: "NY PM Killzone", startMinute: M(13, 30), endMinute: M(16), kind: "killzone" },
+  {
+    key: "asian-kz",
+    label: "Asian Killzone",
+    startMinute: M(20),
+    endMinute: M(24),
+    kind: "killzone",
+  },
+  {
+    key: "london-kz",
+    label: "London Killzone",
+    startMinute: M(2),
+    endMinute: M(5),
+    kind: "killzone",
+  },
+  {
+    key: "ny-am-kz",
+    label: "NY AM Killzone",
+    startMinute: M(7),
+    endMinute: M(10),
+    kind: "killzone",
+  },
+  {
+    key: "ny-pm-kz",
+    label: "NY PM Killzone",
+    startMinute: M(13, 30),
+    endMinute: M(16),
+    kind: "killzone",
+  },
 ];
 
 export const SILVER_BULLET_WINDOWS: TimeWindow[] = [
-  { key: "sb-london", label: "London Silver Bullet", startMinute: M(3), endMinute: M(4), kind: "silver-bullet" },
-  { key: "sb-am", label: "AM Silver Bullet", startMinute: M(10), endMinute: M(11), kind: "silver-bullet" },
-  { key: "sb-pm", label: "PM Silver Bullet", startMinute: M(14), endMinute: M(15), kind: "silver-bullet" },
+  {
+    key: "sb-london",
+    label: "London Silver Bullet",
+    startMinute: M(3),
+    endMinute: M(4),
+    kind: "silver-bullet",
+  },
+  {
+    key: "sb-am",
+    label: "AM Silver Bullet",
+    startMinute: M(10),
+    endMinute: M(11),
+    kind: "silver-bullet",
+  },
+  {
+    key: "sb-pm",
+    label: "PM Silver Bullet",
+    startMinute: M(14),
+    endMinute: M(15),
+    kind: "silver-bullet",
+  },
 ];
 
 export const POWELL_WINDOW: TimeWindow = {

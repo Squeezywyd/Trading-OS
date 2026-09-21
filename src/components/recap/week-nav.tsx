@@ -14,13 +14,23 @@ export function WeekNav({ weekStart }: { weekStart: string }) {
 
   return (
     <div className="flex items-center gap-2">
-      <Button variant="outline" size="icon-sm" onClick={() => router.push(`/recap/${prev}`)} aria-label="Previous week">
+      <Button
+        variant="outline"
+        size="icon-sm"
+        onClick={() => router.push(`/recap/${prev}`)}
+        aria-label="Previous week"
+      >
         <ChevronLeft />
       </Button>
       <span className="font-mono text-sm tabular-nums">
         {format(date, "MMM d")} – {weekEnd}
       </span>
-      <Button variant="outline" size="icon-sm" onClick={() => router.push(`/recap/${next}`)} aria-label="Next week">
+      <Button
+        variant="outline"
+        size="icon-sm"
+        onClick={() => router.push(`/recap/${next}`)}
+        aria-label="Next week"
+      >
         <ChevronRight />
       </Button>
     </div>

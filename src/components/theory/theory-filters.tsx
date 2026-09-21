@@ -47,27 +47,54 @@ export function TheoryFilters() {
         />
       </div>
 
-      <Select value={searchParams.get("category") ?? ALL} onValueChange={(v) => updateParam("category", v ?? ALL)}>
-        <SelectTrigger className="w-40"><SelectValue placeholder="Category" /></SelectTrigger>
+      <Select
+        value={searchParams.get("category") ?? ALL}
+        onValueChange={(v) => updateParam("category", v ?? ALL)}
+      >
+        <SelectTrigger className="w-40">
+          <SelectValue placeholder="Category" />
+        </SelectTrigger>
         <SelectContent>
           <SelectItem value={ALL}>All categories</SelectItem>
-          {THEORY_CATEGORIES.map((c) => <SelectItem key={c} value={c}>{c}</SelectItem>)}
+          {THEORY_CATEGORIES.map((c) => (
+            <SelectItem key={c} value={c}>
+              {c}
+            </SelectItem>
+          ))}
         </SelectContent>
       </Select>
 
-      <Select value={searchParams.get("useFor") ?? ALL} onValueChange={(v) => updateParam("useFor", v ?? ALL)}>
-        <SelectTrigger className="w-36"><SelectValue placeholder="Use for" /></SelectTrigger>
+      <Select
+        value={searchParams.get("useFor") ?? ALL}
+        onValueChange={(v) => updateParam("useFor", v ?? ALL)}
+      >
+        <SelectTrigger className="w-36">
+          <SelectValue placeholder="Use for" />
+        </SelectTrigger>
         <SelectContent>
           <SelectItem value={ALL}>Any use</SelectItem>
-          {THEORY_USE_FOR.map((u) => <SelectItem key={u} value={u}>{u}</SelectItem>)}
+          {THEORY_USE_FOR.map((u) => (
+            <SelectItem key={u} value={u}>
+              {u}
+            </SelectItem>
+          ))}
         </SelectContent>
       </Select>
 
-      <Select value={searchParams.get("priority") ?? ALL} onValueChange={(v) => updateParam("priority", v ?? ALL)}>
-        <SelectTrigger className="w-32"><SelectValue placeholder="Priority" /></SelectTrigger>
+      <Select
+        value={searchParams.get("priority") ?? ALL}
+        onValueChange={(v) => updateParam("priority", v ?? ALL)}
+      >
+        <SelectTrigger className="w-32">
+          <SelectValue placeholder="Priority" />
+        </SelectTrigger>
         <SelectContent>
           <SelectItem value={ALL}>Any priority</SelectItem>
-          {THEORY_PRIORITIES.map((p) => <SelectItem key={p} value={p}>{p}</SelectItem>)}
+          {THEORY_PRIORITIES.map((p) => (
+            <SelectItem key={p} value={p}>
+              {p}
+            </SelectItem>
+          ))}
         </SelectContent>
       </Select>
     </div>

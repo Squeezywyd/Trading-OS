@@ -46,7 +46,11 @@ export type TradeFormValues = z.infer<typeof tradeFormSchema>;
  * degrades zodResolver's generic inference (ResolverOptions["names"] widens to
  * string[] and stops satisfying react-hook-form's Resolver<TradeFormValues>). */
 export function validateTradeCrossFields(values: TradeFormValues): string | null {
-  if (values.entry_price != null && values.stop_price != null && values.entry_price === values.stop_price) {
+  if (
+    values.entry_price != null &&
+    values.stop_price != null &&
+    values.entry_price === values.stop_price
+  ) {
     return "Entry and stop cannot be equal";
   }
   return null;

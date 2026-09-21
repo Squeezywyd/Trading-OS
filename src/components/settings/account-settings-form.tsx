@@ -65,13 +65,23 @@ export function AccountSettingsForm({ settings }: { settings: Tables<"account_se
         <Field>
           <FieldLabel htmlFor="account_name">Account name</FieldLabel>
           <FieldContent>
-            <Input id="account_name" placeholder="e.g. LucidFlex 50K" {...register("account_name")} />
+            <Input
+              id="account_name"
+              placeholder="e.g. LucidFlex 50K"
+              {...register("account_name")}
+            />
           </FieldContent>
         </Field>
         <Field>
           <FieldLabel htmlFor="starting_balance_usd">Starting balance ($)</FieldLabel>
           <FieldContent>
-            <Input id="starting_balance_usd" type="number" step="any" className="font-mono tabular-nums" {...register("starting_balance_usd")} />
+            <Input
+              id="starting_balance_usd"
+              type="number"
+              step="any"
+              className="font-mono tabular-nums"
+              {...register("starting_balance_usd")}
+            />
           </FieldContent>
         </Field>
       </div>
@@ -80,19 +90,37 @@ export function AccountSettingsForm({ settings }: { settings: Tables<"account_se
         <Field>
           <FieldLabel htmlFor="profit_target_usd">Profit target ($)</FieldLabel>
           <FieldContent>
-            <Input id="profit_target_usd" type="number" step="any" className="font-mono tabular-nums" {...register("profit_target_usd")} />
+            <Input
+              id="profit_target_usd"
+              type="number"
+              step="any"
+              className="font-mono tabular-nums"
+              {...register("profit_target_usd")}
+            />
           </FieldContent>
         </Field>
         <Field>
           <FieldLabel htmlFor="daily_loss_limit_usd">Daily loss limit ($)</FieldLabel>
           <FieldContent>
-            <Input id="daily_loss_limit_usd" type="number" step="any" className="font-mono tabular-nums" {...register("daily_loss_limit_usd")} />
+            <Input
+              id="daily_loss_limit_usd"
+              type="number"
+              step="any"
+              className="font-mono tabular-nums"
+              {...register("daily_loss_limit_usd")}
+            />
           </FieldContent>
         </Field>
         <Field>
           <FieldLabel htmlFor="max_drawdown_usd">Max drawdown ($)</FieldLabel>
           <FieldContent>
-            <Input id="max_drawdown_usd" type="number" step="any" className="font-mono tabular-nums" {...register("max_drawdown_usd")} />
+            <Input
+              id="max_drawdown_usd"
+              type="number"
+              step="any"
+              className="font-mono tabular-nums"
+              {...register("max_drawdown_usd")}
+            />
           </FieldContent>
         </Field>
       </div>
@@ -106,10 +134,14 @@ export function AccountSettingsForm({ settings }: { settings: Tables<"account_se
               name="drawdown_type"
               render={({ field }) => (
                 <Select value={field.value ?? undefined} onValueChange={field.onChange}>
-                  <SelectTrigger className="w-full"><SelectValue placeholder="—" /></SelectTrigger>
+                  <SelectTrigger className="w-full">
+                    <SelectValue placeholder="—" />
+                  </SelectTrigger>
                   <SelectContent>
                     {DRAWDOWN_TYPES.map((v) => (
-                      <SelectItem key={v} value={v}>{DRAWDOWN_LABELS[v]}</SelectItem>
+                      <SelectItem key={v} value={v}>
+                        {DRAWDOWN_LABELS[v]}
+                      </SelectItem>
                     ))}
                   </SelectContent>
                 </Select>
@@ -120,13 +152,25 @@ export function AccountSettingsForm({ settings }: { settings: Tables<"account_se
         <Field>
           <FieldLabel htmlFor="consistency_rule_pct">Consistency rule (%)</FieldLabel>
           <FieldContent>
-            <Input id="consistency_rule_pct" type="number" step="any" className="font-mono tabular-nums" {...register("consistency_rule_pct")} />
+            <Input
+              id="consistency_rule_pct"
+              type="number"
+              step="any"
+              className="font-mono tabular-nums"
+              {...register("consistency_rule_pct")}
+            />
           </FieldContent>
         </Field>
         <Field>
           <FieldLabel htmlFor="max_contracts">Max contracts</FieldLabel>
           <FieldContent>
-            <Input id="max_contracts" type="number" step="1" className="font-mono tabular-nums" {...register("max_contracts")} />
+            <Input
+              id="max_contracts"
+              type="number"
+              step="1"
+              className="font-mono tabular-nums"
+              {...register("max_contracts")}
+            />
           </FieldContent>
         </Field>
       </div>

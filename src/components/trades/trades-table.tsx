@@ -52,7 +52,7 @@ export function TradesTable({ trades }: { trades: TradeWithR[] }) {
   return (
     <div className="space-y-4">
       <div className="flex flex-wrap items-center gap-2">
-        <div className="relative flex-1 min-w-[180px]">
+        <div className="relative min-w-[180px] flex-1">
           <Search className="text-muted-foreground pointer-events-none absolute top-1/2 left-2.5 size-3.5 -translate-y-1/2" />
           <Input
             placeholder="Search title..."
@@ -62,27 +62,48 @@ export function TradesTable({ trades }: { trades: TradeWithR[] }) {
           />
         </div>
 
-        <Select value={instrument} onValueChange={(v) => setInstrument(v as Instrument | typeof ALL)}>
-          <SelectTrigger className="w-32"><SelectValue placeholder="Instrument" /></SelectTrigger>
+        <Select
+          value={instrument}
+          onValueChange={(v) => setInstrument(v as Instrument | typeof ALL)}
+        >
+          <SelectTrigger className="w-32">
+            <SelectValue placeholder="Instrument" />
+          </SelectTrigger>
           <SelectContent>
             <SelectItem value={ALL}>All instruments</SelectItem>
-            {INSTRUMENTS.map((v) => <SelectItem key={v} value={v}>{v}</SelectItem>)}
+            {INSTRUMENTS.map((v) => (
+              <SelectItem key={v} value={v}>
+                {v}
+              </SelectItem>
+            ))}
           </SelectContent>
         </Select>
 
         <Select value={session} onValueChange={(v) => setSession(v as Session | typeof ALL)}>
-          <SelectTrigger className="w-32"><SelectValue placeholder="Session" /></SelectTrigger>
+          <SelectTrigger className="w-32">
+            <SelectValue placeholder="Session" />
+          </SelectTrigger>
           <SelectContent>
             <SelectItem value={ALL}>All sessions</SelectItem>
-            {SESSIONS.map((v) => <SelectItem key={v} value={v}>{v}</SelectItem>)}
+            {SESSIONS.map((v) => (
+              <SelectItem key={v} value={v}>
+                {v}
+              </SelectItem>
+            ))}
           </SelectContent>
         </Select>
 
         <Select value={result} onValueChange={(v) => setResult(v as Result | typeof ALL)}>
-          <SelectTrigger className="w-32"><SelectValue placeholder="Result" /></SelectTrigger>
+          <SelectTrigger className="w-32">
+            <SelectValue placeholder="Result" />
+          </SelectTrigger>
           <SelectContent>
             <SelectItem value={ALL}>All results</SelectItem>
-            {RESULTS.map((v) => <SelectItem key={v} value={v}>{v}</SelectItem>)}
+            {RESULTS.map((v) => (
+              <SelectItem key={v} value={v}>
+                {v}
+              </SelectItem>
+            ))}
           </SelectContent>
         </Select>
 
@@ -141,20 +162,35 @@ export function TradesTable({ trades }: { trades: TradeWithR[] }) {
                   key={t.id}
                   className="border-border/40 hover:bg-muted/30 border-b transition-colors last:border-0"
                 >
-                  <td className="px-3 py-2 font-mono text-xs tabular-nums whitespace-nowrap">{t.date}</td>
+                  <td className="px-3 py-2 font-mono text-xs whitespace-nowrap tabular-nums">
+                    {t.date}
+                  </td>
                   <td className="px-3 py-2">
-                    <Link href={`/journal/${t.id}/edit`} className="hover:text-primary hover:underline">
+                    <Link
+                      href={`/journal/${t.id}/edit`}
+                      className="hover:text-primary hover:underline"
+                    >
                       {t.title}
                     </Link>
                   </td>
                   <td className="px-3 py-2">{t.instrument}</td>
                   <td className="px-3 py-2">{t.session}</td>
-                  <td className={`px-3 py-2 font-medium ${resultVariant(t.result)}`}>{t.result ?? "—"}</td>
-                  <td className={`px-3 py-2 text-right font-mono tabular-nums ${t.r_multiple != null ? (t.r_multiple >= 0 ? "text-profit" : "text-loss") : "text-muted-foreground"}`}>
-                    {t.r_multiple != null ? `${t.r_multiple > 0 ? "+" : ""}${t.r_multiple.toFixed(2)}R` : "—"}
+                  <td className={`px-3 py-2 font-medium ${resultVariant(t.result)}`}>
+                    {t.result ?? "—"}
                   </td>
-                  <td className={`px-3 py-2 text-right font-mono tabular-nums ${t.pnl_usd != null ? (t.pnl_usd >= 0 ? "text-profit" : "text-loss") : "text-muted-foreground"}`}>
-                    {t.pnl_usd != null ? `${t.pnl_usd >= 0 ? "+" : "-"}$${Math.abs(t.pnl_usd).toFixed(2)}` : "—"}
+                  <td
+                    className={`px-3 py-2 text-right font-mono tabular-nums ${t.r_multiple != null ? (t.r_multiple >= 0 ? "text-profit" : "text-loss") : "text-muted-foreground"}`}
+                  >
+                    {t.r_multiple != null
+                      ? `${t.r_multiple > 0 ? "+" : ""}${t.r_multiple.toFixed(2)}R`
+                      : "—"}
+                  </td>
+                  <td
+                    className={`px-3 py-2 text-right font-mono tabular-nums ${t.pnl_usd != null ? (t.pnl_usd >= 0 ? "text-profit" : "text-loss") : "text-muted-foreground"}`}
+                  >
+                    {t.pnl_usd != null
+                      ? `${t.pnl_usd >= 0 ? "+" : "-"}$${Math.abs(t.pnl_usd).toFixed(2)}`
+                      : "—"}
                   </td>
                   <td className="px-3 py-2">
                     {t.setup_grade ? <Badge variant="outline">{t.setup_grade}</Badge> : "—"}

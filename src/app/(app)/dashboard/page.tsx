@@ -22,12 +22,17 @@ import { Badge } from "@/components/ui/badge";
 import { getBiasAccuracy, getDashboardKpis, getEquityCurve } from "@/lib/data/analytics";
 import { getAccountSettings } from "@/lib/data/account-settings";
 import { getDailyPrepByDate } from "@/lib/data/daily-preps";
-import { getWeeklyRecapByWeekStart, getWeeklyRecapStats, weekStartForDate } from "@/lib/data/weekly-recaps";
+import {
+  getWeeklyRecapByWeekStart,
+  getWeeklyRecapStats,
+  weekStartForDate,
+} from "@/lib/data/weekly-recaps";
 import { NY_TZ } from "@/lib/trading/sessions";
 
 const RANGE_DAYS: Record<string, number | null> = { "7d": 7, "30d": 30, "90d": 90, all: null };
 
-const usd = (n: number) => `${n < 0 ? "-" : ""}$${Math.abs(n).toLocaleString(undefined, { maximumFractionDigits: 0 })}`;
+const usd = (n: number) =>
+  `${n < 0 ? "-" : ""}$${Math.abs(n).toLocaleString(undefined, { maximumFractionDigits: 0 })}`;
 const pct = (n: number) => `${n.toFixed(1)}%`;
 const rMult = (n: number) => `${n >= 0 ? "+" : ""}${n.toFixed(2)}R`;
 
@@ -55,8 +60,12 @@ export default async function DashboardPage({
   const weekStats = weekRecap ? await getWeeklyRecapStats(weekRecap.id) : null;
 
   const todayTrades = equityCurve.find((e) => e.date === todayNy);
-  const todayLoss = todayTrades?.daily_pnl != null && todayTrades.daily_pnl < 0 ? Math.abs(todayTrades.daily_pnl) : 0;
-  const latestDrawdown = equityCurve.length > 0 ? Math.abs(equityCurve[equityCurve.length - 1].drawdown ?? 0) : 0;
+  const todayLoss =
+    todayTrades?.daily_pnl != null && todayTrades.daily_pnl < 0
+      ? Math.abs(todayTrades.daily_pnl)
+      : 0;
+  const latestDrawdown =
+    equityCurve.length > 0 ? Math.abs(equityCurve[equityCurve.length - 1].drawdown ?? 0) : 0;
 
   const hasTrades = (kpis?.trade_count ?? 0) > 0;
 
@@ -95,7 +104,12 @@ export default async function DashboardPage({
               tone={kpis && kpis.net_pnl >= 0 ? "profit" : "loss"}
             />
             <StatCard label="Win rate" value={kpis?.win_rate ?? 0} formatter={pct} icon={Target} />
-            <StatCard label="Expectancy" value={kpis?.expectancy_r ?? 0} formatter={rMult} icon={Scale} />
+            <StatCard
+              label="Expectancy"
+              value={kpis?.expectancy_r ?? 0}
+              formatter={rMult}
+              icon={Scale}
+            />
             <StatCard
               label="Profit factor"
               value={kpis?.profit_factor ?? 0}
@@ -109,8 +123,18 @@ export default async function DashboardPage({
               tone="loss"
               icon={TrendingDown}
             />
-            <StatCard label="Avg win" value={kpis?.avg_win_r ?? 0} formatter={rMult} tone="profit" />
-            <StatCard label="Avg loss" value={kpis?.avg_loss_r ?? 0} formatter={rMult} tone="loss" />
+            <StatCard
+              label="Avg win"
+              value={kpis?.avg_win_r ?? 0}
+              formatter={rMult}
+              tone="profit"
+            />
+            <StatCard
+              label="Avg loss"
+              value={kpis?.avg_loss_r ?? 0}
+              formatter={rMult}
+              tone="loss"
+            />
             <StatCard
               label="Streak"
               value={kpis?.current_streak ?? 0}
@@ -123,26 +147,49 @@ export default async function DashboardPage({
               formatter={pct}
               icon={CalendarCheck}
             />
-            <StatCard label="Rule breaks" value={kpis?.rule_break_count ?? 0} formatter={(n) => `${n}`} tone={kpis && kpis.rule_break_count > 0 ? "loss" : "neutral"} />
+            <StatCard
+              label="Rule breaks"
+              value={kpis?.rule_break_count ?? 0}
+              formatter={(n) => `${n}`}
+              tone={kpis && kpis.rule_break_count > 0 ? "loss" : "neutral"}
+            />
           </div>
 
           <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-            <RiskGauge label="Today's loss vs daily limit" usedUsd={todayLoss} limitUsd={settings?.daily_loss_limit_usd ?? null} />
-            <RiskGauge label="Current drawdown vs max" usedUsd={latestDrawdown} limitUsd={settings?.max_drawdown_usd ?? null} />
+            <RiskGauge
+              label="Today's loss vs daily limit"
+              usedUsd={todayLoss}
+              limitUsd={settings?.daily_loss_limit_usd ?? null}
+            />
+            <RiskGauge
+              label="Current drawdown vs max"
+              usedUsd={latestDrawdown}
+              limitUsd={settings?.max_drawdown_usd ?? null}
+            />
           </div>
 
           <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-            <Link href="/recap" className="glass-panel hover:border-border block p-4 transition-colors">
+            <Link
+              href="/recap"
+              className="glass-panel hover:border-border block p-4 transition-colors"
+            >
               <p className="label-muted">This week</p>
               <div className="mt-1.5 flex items-baseline gap-3">
-                <span className={`font-mono text-xl font-semibold tabular-nums ${weekStats && weekStats.net_pnl != null && weekStats.net_pnl >= 0 ? "text-profit" : "text-loss"}`}>
+                <span
+                  className={`font-mono text-xl font-semibold tabular-nums ${weekStats && weekStats.net_pnl != null && weekStats.net_pnl >= 0 ? "text-profit" : "text-loss"}`}
+                >
                   {weekStats ? usd(weekStats.net_pnl ?? 0) : "—"}
                 </span>
-                <span className="text-muted-foreground text-xs">{weekStats?.trade_count ?? 0} trades</span>
+                <span className="text-muted-foreground text-xs">
+                  {weekStats?.trade_count ?? 0} trades
+                </span>
               </div>
             </Link>
 
-            <Link href="/prep" className="glass-panel hover:border-border block p-4 transition-colors">
+            <Link
+              href="/prep"
+              className="glass-panel hover:border-border block p-4 transition-colors"
+            >
               <p className="label-muted">Today&apos;s prep</p>
               <div className="mt-1.5 flex items-center gap-2">
                 <Sunrise className="text-muted-foreground size-4" />

@@ -38,7 +38,13 @@ import {
   TableRow,
 } from "@/components/ui/table";
 
-function ModelRuleDialog({ rule, trigger }: { rule?: Tables<"model_rules">; trigger: React.ReactElement }) {
+function ModelRuleDialog({
+  rule,
+  trigger,
+}: {
+  rule?: Tables<"model_rules">;
+  trigger: React.ReactElement;
+}) {
   const [open, setOpen] = React.useState(false);
   const router = useRouter();
 
@@ -80,9 +86,15 @@ function ModelRuleDialog({ rule, trigger }: { rule?: Tables<"model_rules">; trig
                 name="model"
                 render={({ field }) => (
                   <Select value={field.value} onValueChange={field.onChange} disabled={!!rule}>
-                    <SelectTrigger className="w-full"><SelectValue /></SelectTrigger>
+                    <SelectTrigger className="w-full">
+                      <SelectValue />
+                    </SelectTrigger>
                     <SelectContent>
-                      {MODELS.map((m) => <SelectItem key={m} value={m}>{m}</SelectItem>)}
+                      {MODELS.map((m) => (
+                        <SelectItem key={m} value={m}>
+                          {m}
+                        </SelectItem>
+                      ))}
                     </SelectContent>
                   </Select>
                 )}
@@ -94,19 +106,34 @@ function ModelRuleDialog({ rule, trigger }: { rule?: Tables<"model_rules">; trig
             <Field>
               <FieldLabel htmlFor="default_contracts">Contracts</FieldLabel>
               <FieldContent>
-                <Input id="default_contracts" type="number" className="font-mono tabular-nums" {...form.register("default_contracts")} />
+                <Input
+                  id="default_contracts"
+                  type="number"
+                  className="font-mono tabular-nums"
+                  {...form.register("default_contracts")}
+                />
               </FieldContent>
             </Field>
             <Field>
               <FieldLabel htmlFor="stop_min_points">Stop min</FieldLabel>
               <FieldContent>
-                <Input id="stop_min_points" type="number" className="font-mono tabular-nums" {...form.register("stop_min_points")} />
+                <Input
+                  id="stop_min_points"
+                  type="number"
+                  className="font-mono tabular-nums"
+                  {...form.register("stop_min_points")}
+                />
               </FieldContent>
             </Field>
             <Field>
               <FieldLabel htmlFor="stop_max_points">Stop max</FieldLabel>
               <FieldContent>
-                <Input id="stop_max_points" type="number" className="font-mono tabular-nums" {...form.register("stop_max_points")} />
+                <Input
+                  id="stop_max_points"
+                  type="number"
+                  className="font-mono tabular-nums"
+                  {...form.register("stop_max_points")}
+                />
               </FieldContent>
             </Field>
           </div>
@@ -152,7 +179,14 @@ export function ModelRulesManager({ rules }: { rules: Tables<"model_rules">[] })
             Shown on the trade form when that model is selected.
           </p>
         </div>
-        <ModelRuleDialog trigger={<Button size="sm" variant="outline"><Plus />Add rule</Button>} />
+        <ModelRuleDialog
+          trigger={
+            <Button size="sm" variant="outline">
+              <Plus />
+              Add rule
+            </Button>
+          }
+        />
       </div>
 
       {rules.length === 0 ? (
@@ -171,12 +205,21 @@ export function ModelRulesManager({ rules }: { rules: Tables<"model_rules">[] })
             {rules.map((r) => (
               <TableRow key={r.id}>
                 <TableCell className="font-medium">{r.model}</TableCell>
-                <TableCell className="text-right font-mono tabular-nums">{r.default_contracts ?? "—"}</TableCell>
+                <TableCell className="text-right font-mono tabular-nums">
+                  {r.default_contracts ?? "—"}
+                </TableCell>
                 <TableCell className="text-right font-mono tabular-nums">
                   {r.stop_min_points ?? "—"}–{r.stop_max_points ?? "—"}
                 </TableCell>
                 <TableCell className="flex justify-end gap-1">
-                  <ModelRuleDialog rule={r} trigger={<Button size="icon-sm" variant="ghost"><Pencil className="size-3.5" /></Button>} />
+                  <ModelRuleDialog
+                    rule={r}
+                    trigger={
+                      <Button size="icon-sm" variant="ghost">
+                        <Pencil className="size-3.5" />
+                      </Button>
+                    }
+                  />
                   <Button size="icon-sm" variant="ghost" onClick={() => onDelete(r.id)}>
                     <Trash2 className="text-loss size-3.5" />
                   </Button>

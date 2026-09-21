@@ -20,7 +20,10 @@ export default async function TheoryDocPage({ params }: { params: Promise<{ slug
 
   return (
     <div>
-      <Link href="/theory" className="text-muted-foreground hover:text-foreground mb-4 inline-flex items-center gap-1.5 text-sm">
+      <Link
+        href="/theory"
+        className="text-muted-foreground hover:text-foreground mb-4 inline-flex items-center gap-1.5 text-sm"
+      >
         <ArrowLeft className="size-3.5" />
         Theory Library
       </Link>
@@ -32,7 +35,9 @@ export default async function TheoryDocPage({ params }: { params: Promise<{ slug
             <Badge variant="outline">{doc.category}</Badge>
             <Badge variant={doc.priority === "Core" ? "default" : "outline"}>{doc.priority}</Badge>
             {doc.use_for.map((u) => (
-              <Badge key={u} variant="secondary">{u}</Badge>
+              <Badge key={u} variant="secondary">
+                {u}
+              </Badge>
             ))}
           </div>
         </div>

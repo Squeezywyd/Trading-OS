@@ -3,12 +3,7 @@ import { PageHeader } from "@/components/page-header";
 import { EmptyState } from "@/components/empty-state";
 import { DateRangeTabs } from "@/components/dashboard/date-range-tabs";
 import { BreakdownPanel } from "@/components/analytics/breakdown-panel";
-import {
-  Tabs,
-  TabsContent,
-  TabsList,
-  TabsTrigger,
-} from "@/components/ui/tabs";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { getStatsBy, type StatsDimension } from "@/lib/data/analytics";
 import { listTrades } from "@/lib/data/trades";
 import { BarChart3 } from "lucide-react";
@@ -46,7 +41,10 @@ export default async function AnalyticsPage({
   if (trades.length === 0) {
     return (
       <>
-        <PageHeader title="Analytics" description="Breakdowns by session, model, instrument, and more." />
+        <PageHeader
+          title="Analytics"
+          description="Breakdowns by session, model, instrument, and more."
+        />
         <EmptyState
           icon={BarChart3}
           title="Nothing to analyze yet"
@@ -67,7 +65,9 @@ export default async function AnalyticsPage({
       <Tabs defaultValue={DIMENSIONS[0].key}>
         <TabsList className="mb-4 flex-wrap">
           {DIMENSIONS.map((d) => (
-            <TabsTrigger key={d.key} value={d.key}>{d.label}</TabsTrigger>
+            <TabsTrigger key={d.key} value={d.key}>
+              {d.label}
+            </TabsTrigger>
           ))}
         </TabsList>
         {DIMENSIONS.map((d, i) => (

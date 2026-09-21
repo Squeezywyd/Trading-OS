@@ -55,7 +55,13 @@ export function Topbar({ onOpenPalette }: { onOpenPalette: () => void }) {
         </Button>
 
         <form action={signOutAction}>
-          <Button variant="ghost" size="icon" className="size-8" aria-label="Sign out" type="submit">
+          <Button
+            variant="ghost"
+            size="icon"
+            className="size-8"
+            aria-label="Sign out"
+            type="submit"
+          >
             <LogOut className="size-4" />
           </Button>
         </form>

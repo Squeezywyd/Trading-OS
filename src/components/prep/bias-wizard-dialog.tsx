@@ -2,11 +2,7 @@
 
 import * as React from "react";
 import { Sparkles } from "lucide-react";
-import {
-  computeDailyBias,
-  type BiasWizardInputs,
-  type BiasWizardResult,
-} from "@/lib/trading/bias";
+import { computeDailyBias, type BiasWizardInputs, type BiasWizardResult } from "@/lib/trading/bias";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Switch } from "@/components/ui/switch";
@@ -54,7 +50,9 @@ function StepToggle<T extends string>({
           className="flex flex-wrap"
         >
           {options.map((o) => (
-            <ToggleGroupItem key={o} value={o}>{o}</ToggleGroupItem>
+            <ToggleGroupItem key={o} value={o}>
+              {o}
+            </ToggleGroupItem>
           ))}
         </ToggleGroup>
       </FieldContent>
@@ -74,12 +72,14 @@ export function BiasWizardDialog({ onApply }: { onApply: (result: BiasWizardResu
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
-      <DialogTrigger render={
-        <Button type="button" variant="outline" size="sm">
-          <Sparkles />
-          Bias Wizard
-        </Button>
-      } />
+      <DialogTrigger
+        render={
+          <Button type="button" variant="outline" size="sm">
+            <Sparkles />
+            Bias Wizard
+          </Button>
+        }
+      />
       <DialogContent className="sm:max-w-md">
         <DialogHeader>
           <DialogTitle>Daily Bias: Top-Down Process</DialogTitle>

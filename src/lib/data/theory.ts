@@ -43,7 +43,11 @@ export async function listTheoryDocs(filters: TheoryFilters = {}) {
 
 export async function getTheoryDocBySlug(slug: string) {
   const supabase = await createClient();
-  const { data, error } = await supabase.from("theory_docs").select("*").eq("slug", slug).maybeSingle();
+  const { data, error } = await supabase
+    .from("theory_docs")
+    .select("*")
+    .eq("slug", slug)
+    .maybeSingle();
   if (error) throw error;
   return data;
 }

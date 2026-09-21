@@ -42,9 +42,15 @@ export function PositionSizeCalculator() {
           <FieldLabel>Instrument</FieldLabel>
           <FieldContent>
             <Select value={instrument} onValueChange={(v) => setInstrument(v as Instrument)}>
-              <SelectTrigger className="w-full"><SelectValue /></SelectTrigger>
+              <SelectTrigger className="w-full">
+                <SelectValue />
+              </SelectTrigger>
               <SelectContent>
-                {INSTRUMENTS.map((v) => <SelectItem key={v} value={v}>{v}</SelectItem>)}
+                {INSTRUMENTS.map((v) => (
+                  <SelectItem key={v} value={v}>
+                    {v}
+                  </SelectItem>
+                ))}
               </SelectContent>
             </Select>
           </FieldContent>
@@ -79,7 +85,9 @@ export function PositionSizeCalculator() {
 
       <div className="glass-panel-flat flex items-center justify-between p-4">
         {pointValue == null ? (
-          <p className="text-muted-foreground text-sm">{instrument} has no fixed point value — size manually.</p>
+          <p className="text-muted-foreground text-sm">
+            {instrument} has no fixed point value — size manually.
+          </p>
         ) : contracts == null || contracts === 0 ? (
           <p className="text-muted-foreground text-sm">Enter a risk budget and stop distance</p>
         ) : (
@@ -91,7 +99,9 @@ export function PositionSizeCalculator() {
             <div className="text-right">
               <p className="label-muted">Actual risk</p>
               <p className="font-mono text-sm tabular-nums">${actualRisk?.toFixed(2)}</p>
-              <p className="text-muted-foreground text-xs">${pointValue}/pt × {stopPointsNum}pt × {contracts}</p>
+              <p className="text-muted-foreground text-xs">
+                ${pointValue}/pt × {stopPointsNum}pt × {contracts}
+              </p>
             </div>
           </>
         )}

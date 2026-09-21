@@ -101,7 +101,8 @@ export function TheoryMarkdown({
       const textChildren = childArray.filter((c) => c !== checkboxEl);
       const text = extractText(textChildren);
       const itemKey = slugifyItemKey(text, seenKeys);
-      const checked = itemKey in initialChecklistState ? initialChecklistState[itemKey] : defaultChecked;
+      const checked =
+        itemKey in initialChecklistState ? initialChecklistState[itemKey] : defaultChecked;
 
       return (
         <TaskListItem
@@ -121,7 +122,11 @@ export function TheoryMarkdown({
 
   return (
     <div className="prose-theory">
-      <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeSlug]} components={components}>
+      <ReactMarkdown
+        remarkPlugins={[remarkGfm]}
+        rehypePlugins={[rehypeSlug]}
+        components={components}
+      >
         {content}
       </ReactMarkdown>
     </div>

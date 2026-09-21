@@ -6,11 +6,7 @@ import { EmptyState } from "@/components/empty-state";
 import { TheoryFilters } from "@/components/theory/theory-filters";
 import { Badge } from "@/components/ui/badge";
 import { listTheoryDocs } from "@/lib/data/theory";
-import type {
-  TheoryCategory,
-  TheoryPriority,
-  TheoryUseFor,
-} from "@/lib/constants/enums";
+import type { TheoryCategory, TheoryPriority, TheoryUseFor } from "@/lib/constants/enums";
 
 export default async function TheoryLibraryPage({
   searchParams,
@@ -47,7 +43,9 @@ export default async function TheoryLibraryPage({
               className="glass-panel hover:border-border block p-4 transition-colors"
             >
               <div className="mb-2 flex items-center justify-between gap-2">
-                <Badge variant="outline" className="text-[10px]">{doc.category}</Badge>
+                <Badge variant="outline" className="text-[10px]">
+                  {doc.category}
+                </Badge>
                 {doc.priority === "Core" ? <Badge className="text-[10px]">Core</Badge> : null}
               </div>
               <h3 className="mb-1 text-sm font-medium">{doc.title}</h3>

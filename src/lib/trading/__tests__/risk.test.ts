@@ -13,9 +13,9 @@ import {
 describe("calcRiskUsd", () => {
   it("computes risk from contracts x points x point value", () => {
     // MNQ point value = 2. Entry 20000, stop 19990 -> 10 pts x 2 contracts x $2 = $40.
-    expect(calcRiskUsd({ instrument: "MNQ", contracts: 2, entryPrice: 20000, stopPrice: 19990 })).toBe(
-      40,
-    );
+    expect(
+      calcRiskUsd({ instrument: "MNQ", contracts: 2, entryPrice: 20000, stopPrice: 19990 }),
+    ).toBe(40);
   });
 
   it("is direction-agnostic (uses absolute distance)", () => {
@@ -25,11 +25,15 @@ describe("calcRiskUsd", () => {
   });
 
   it("returns null for instruments with no fixed point value", () => {
-    expect(calcRiskUsd({ instrument: "ETH", contracts: 1, entryPrice: 100, stopPrice: 90 })).toBeNull();
+    expect(
+      calcRiskUsd({ instrument: "ETH", contracts: 1, entryPrice: 100, stopPrice: 90 }),
+    ).toBeNull();
   });
 
   it("returns null when required inputs are missing", () => {
-    expect(calcRiskUsd({ instrument: "NQ", contracts: null, entryPrice: 100, stopPrice: 90 })).toBeNull();
+    expect(
+      calcRiskUsd({ instrument: "NQ", contracts: null, entryPrice: 100, stopPrice: 90 }),
+    ).toBeNull();
   });
 });
 
@@ -90,10 +94,14 @@ describe("calcProfitFactor", () => {
 describe("calcPositionSize", () => {
   it("floors to whole contracts within the risk budget", () => {
     // MNQ $2/pt, 10pt stop -> $20/contract risk. $45 budget -> 2 contracts.
-    expect(calcPositionSize({ instrument: "MNQ", riskBudgetUsd: 45, stopDistancePoints: 10 })).toBe(2);
+    expect(calcPositionSize({ instrument: "MNQ", riskBudgetUsd: 45, stopDistancePoints: 10 })).toBe(
+      2,
+    );
   });
 
   it("returns null for non-positive inputs", () => {
-    expect(calcPositionSize({ instrument: "MNQ", riskBudgetUsd: 0, stopDistancePoints: 10 })).toBeNull();
+    expect(
+      calcPositionSize({ instrument: "MNQ", riskBudgetUsd: 0, stopDistancePoints: 10 }),
+    ).toBeNull();
   });
 });

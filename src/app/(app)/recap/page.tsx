@@ -3,7 +3,11 @@ import { toZonedTime } from "date-fns-tz";
 import { PageHeader } from "@/components/page-header";
 import { WeekNav } from "@/components/recap/week-nav";
 import { WeeklyRecapForm } from "@/components/recap/weekly-recap-form";
-import { getWeeklyRecapByWeekStart, getWeeklyRecapStats, weekStartForDate } from "@/lib/data/weekly-recaps";
+import {
+  getWeeklyRecapByWeekStart,
+  getWeeklyRecapStats,
+  weekStartForDate,
+} from "@/lib/data/weekly-recaps";
 import { getStatsBy } from "@/lib/data/analytics";
 import { NY_TZ } from "@/lib/trading/sessions";
 import { addDays } from "date-fns";
@@ -21,7 +25,11 @@ export default async function WeeklyRecapPage() {
 
   return (
     <>
-      <PageHeader title="Weekly Recap" description="This week" actions={<WeekNav weekStart={weekStart} />} />
+      <PageHeader
+        title="Weekly Recap"
+        description="This week"
+        actions={<WeekNav weekStart={weekStart} />}
+      />
       <WeeklyRecapForm weekStart={weekStart} recap={recap} stats={stats} modelStats={modelStats} />
     </>
   );

@@ -34,12 +34,16 @@ function CustomTooltip({
 
   return (
     <div className="border-border/60 bg-popover rounded-lg border px-3 py-2 font-mono text-xs shadow-xl">
-      <p className="text-muted-foreground mb-1">{label ? format(new Date(label), "EEE, MMM d") : ""}</p>
+      <p className="text-muted-foreground mb-1">
+        {label ? format(new Date(label), "EEE, MMM d") : ""}
+      </p>
       <p className={(point.cumulative_pnl ?? 0) >= 0 ? "text-profit" : "text-loss"}>
         {formatUsd(point.cumulative_pnl ?? 0)}
       </p>
       <p className="text-muted-foreground">
-        {point.cumulative_r != null ? `${point.cumulative_r >= 0 ? "+" : ""}${point.cumulative_r.toFixed(2)}R` : "—"}
+        {point.cumulative_r != null
+          ? `${point.cumulative_r >= 0 ? "+" : ""}${point.cumulative_r.toFixed(2)}R`
+          : "—"}
       </p>
       {point.drawdown != null && point.drawdown < 0 ? (
         <p className="text-loss mt-1">{formatUsd(point.drawdown)} drawdown</p>
@@ -94,7 +98,10 @@ export function EquityCurveChart({ data }: { data: EquityPoint[] }) {
             activeDot={{ r: 3, strokeWidth: 0, fill: "var(--primary)" }}
             isAnimationActive
           />
-          <Tooltip cursor={{ stroke: "var(--border)", strokeWidth: 1 }} content={<CustomTooltip />} />
+          <Tooltip
+            cursor={{ stroke: "var(--border)", strokeWidth: 1 }}
+            content={<CustomTooltip />}
+          />
         </AreaChart>
       </ResponsiveContainer>
     </div>

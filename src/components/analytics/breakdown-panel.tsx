@@ -1,14 +1,6 @@
 "use client";
 
-import {
-  Bar,
-  BarChart,
-  Cell,
-  ResponsiveContainer,
-  Tooltip,
-  XAxis,
-  YAxis,
-} from "recharts";
+import { Bar, BarChart, Cell, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 import { AlertTriangle } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import {
@@ -45,7 +37,9 @@ function ExpectancyTooltip({
   return (
     <div className="border-border/60 bg-popover rounded-lg border px-3 py-2 font-mono text-xs shadow-xl">
       <p className="text-foreground mb-1 font-medium">{row.dimension}</p>
-      <p className="text-muted-foreground">n={row.n} · win rate {row.win_rate?.toFixed(0) ?? "—"}%</p>
+      <p className="text-muted-foreground">
+        n={row.n} · win rate {row.win_rate?.toFixed(0) ?? "—"}%
+      </p>
       <p className={row.expectancy != null && row.expectancy >= 0 ? "text-profit" : "text-loss"}>
         {usd(row.expectancy)} expectancy
       </p>
@@ -55,7 +49,9 @@ function ExpectancyTooltip({
 
 export function BreakdownPanel({ rows }: { rows: StatsRow[] }) {
   if (rows.length === 0) {
-    return <p className="text-muted-foreground py-8 text-center text-sm">No trades in this range yet.</p>;
+    return (
+      <p className="text-muted-foreground py-8 text-center text-sm">No trades in this range yet.</p>
+    );
   }
 
   return (
@@ -74,7 +70,11 @@ export function BreakdownPanel({ rows }: { rows: StatsRow[] }) {
               height={rows.length > 6 ? 48 : 24}
             />
             <YAxis
-              tick={{ fontSize: 11, fill: "var(--muted-foreground)", fontFamily: "var(--font-mono)" }}
+              tick={{
+                fontSize: 11,
+                fill: "var(--muted-foreground)",
+                fontFamily: "var(--font-mono)",
+              }}
               axisLine={false}
               tickLine={false}
               tickFormatter={(v: number) => usd(v)}
@@ -85,7 +85,9 @@ export function BreakdownPanel({ rows }: { rows: StatsRow[] }) {
               {rows.map((row) => (
                 <Cell
                   key={row.dimension}
-                  fill={row.expectancy != null && row.expectancy >= 0 ? "var(--profit)" : "var(--loss)"}
+                  fill={
+                    row.expectancy != null && row.expectancy >= 0 ? "var(--profit)" : "var(--loss)"
+                  }
                 />
               ))}
             </Bar>

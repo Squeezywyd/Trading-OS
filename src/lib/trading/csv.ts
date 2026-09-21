@@ -124,7 +124,9 @@ export function parseTradeCsv(text: string): CsvImportRow[] {
       instrument: record.instrument as TradeFormValues["instrument"],
       direction: record.direction as TradeFormValues["direction"],
       session: record.session as TradeFormValues["session"],
-      models: record.models ? (record.models.split(";").filter(Boolean) as TradeFormValues["models"]) : [],
+      models: record.models
+        ? (record.models.split(";").filter(Boolean) as TradeFormValues["models"])
+        : [],
       amd_phase: (record.amd_phase || null) as TradeFormValues["amd_phase"],
       bias_alignment: (record.bias_alignment || null) as TradeFormValues["bias_alignment"],
       entry_price: num(record.entry_price ?? ""),

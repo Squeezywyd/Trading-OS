@@ -53,10 +53,20 @@ export function MonthCalendar({
       <div className="flex items-center justify-between">
         <h3 className="text-lg font-semibold tracking-tight">{format(anchor, "MMMM yyyy")}</h3>
         <div className="flex gap-1">
-          <Button variant="outline" size="icon-sm" onClick={() => router.push(`/calendar?month=${prevMonth}`)} aria-label="Previous month">
+          <Button
+            variant="outline"
+            size="icon-sm"
+            onClick={() => router.push(`/calendar?month=${prevMonth}`)}
+            aria-label="Previous month"
+          >
             <ChevronLeft />
           </Button>
-          <Button variant="outline" size="icon-sm" onClick={() => router.push(`/calendar?month=${nextMonth}`)} aria-label="Next month">
+          <Button
+            variant="outline"
+            size="icon-sm"
+            onClick={() => router.push(`/calendar?month=${nextMonth}`)}
+            aria-label="Next month"
+          >
             <ChevronRight />
           </Button>
         </div>
@@ -65,7 +75,9 @@ export function MonthCalendar({
       <div className="glass-panel overflow-hidden">
         <div className="border-border/60 text-muted-foreground grid grid-cols-7 border-b text-center text-xs font-medium">
           {WEEKDAYS.map((d) => (
-            <div key={d} className="py-2">{d}</div>
+            <div key={d} className="py-2">
+              {d}
+            </div>
           ))}
         </div>
         <div className="grid grid-cols-7">
@@ -83,12 +95,20 @@ export function MonthCalendar({
                 )}
               >
                 <div className="flex items-center justify-between">
-                  <span className={cn("text-xs tabular-nums", isToday(date) && "text-primary font-semibold")}>
+                  <span
+                    className={cn(
+                      "text-xs tabular-nums",
+                      isToday(date) && "text-primary font-semibold",
+                    )}
+                  >
                     {format(date, "d")}
                   </span>
                   {data?.biasOutcome ? (
                     <span
-                      className={cn("size-1.5 rounded-full", BIAS_DOT[data.biasOutcome] ?? "bg-muted-foreground")}
+                      className={cn(
+                        "size-1.5 rounded-full",
+                        BIAS_DOT[data.biasOutcome] ?? "bg-muted-foreground",
+                      )}
                       title={data.biasOutcome}
                     />
                   ) : null}
@@ -98,7 +118,11 @@ export function MonthCalendar({
                     <p
                       className={cn(
                         "font-mono text-xs font-medium tabular-nums",
-                        data.pnl > 0 ? "text-profit" : data.pnl < 0 ? "text-loss" : "text-muted-foreground",
+                        data.pnl > 0
+                          ? "text-profit"
+                          : data.pnl < 0
+                            ? "text-loss"
+                            : "text-muted-foreground",
                       )}
                     >
                       {data.pnl >= 0 ? "+" : "-"}${Math.abs(data.pnl).toFixed(0)}

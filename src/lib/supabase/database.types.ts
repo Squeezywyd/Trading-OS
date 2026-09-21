@@ -2,658 +2,626 @@
 // Do not hand-edit — regenerate after every migration:
 //   npx supabase gen types typescript --project-id ypfrgpanegzmclnbygbl > src/lib/supabase/database.types.ts
 
-export type Json =
-  | string
-  | number
-  | boolean
-  | null
-  | { [key: string]: Json | undefined }
-  | Json[]
+export type Json = string | number | boolean | null | { [key: string]: Json | undefined } | Json[];
 
 export type Database = {
   __InternalSupabase: {
-    PostgrestVersion: "14.5"
-  }
+    PostgrestVersion: "14.5";
+  };
   public: {
     Tables: {
       account_settings: {
         Row: {
-          account_name: string | null
-          consistency_rule_pct: number | null
-          created_at: string
-          daily_loss_limit_usd: number | null
-          drawdown_type: Database["public"]["Enums"]["drawdown_type_enum"] | null
-          max_contracts: number | null
-          max_drawdown_usd: number | null
-          profit_target_usd: number | null
-          starting_balance_usd: number | null
-          timezone: string
-          updated_at: string
-          user_id: string
-        }
+          account_name: string | null;
+          consistency_rule_pct: number | null;
+          created_at: string;
+          daily_loss_limit_usd: number | null;
+          drawdown_type: Database["public"]["Enums"]["drawdown_type_enum"] | null;
+          max_contracts: number | null;
+          max_drawdown_usd: number | null;
+          profit_target_usd: number | null;
+          starting_balance_usd: number | null;
+          timezone: string;
+          updated_at: string;
+          user_id: string;
+        };
         Insert: {
-          account_name?: string | null
-          consistency_rule_pct?: number | null
-          created_at?: string
-          daily_loss_limit_usd?: number | null
-          drawdown_type?: Database["public"]["Enums"]["drawdown_type_enum"] | null
-          max_contracts?: number | null
-          max_drawdown_usd?: number | null
-          profit_target_usd?: number | null
-          starting_balance_usd?: number | null
-          timezone?: string
-          updated_at?: string
-          user_id?: string
-        }
+          account_name?: string | null;
+          consistency_rule_pct?: number | null;
+          created_at?: string;
+          daily_loss_limit_usd?: number | null;
+          drawdown_type?: Database["public"]["Enums"]["drawdown_type_enum"] | null;
+          max_contracts?: number | null;
+          max_drawdown_usd?: number | null;
+          profit_target_usd?: number | null;
+          starting_balance_usd?: number | null;
+          timezone?: string;
+          updated_at?: string;
+          user_id?: string;
+        };
         Update: {
-          account_name?: string | null
-          consistency_rule_pct?: number | null
-          created_at?: string
-          daily_loss_limit_usd?: number | null
-          drawdown_type?: Database["public"]["Enums"]["drawdown_type_enum"] | null
-          max_contracts?: number | null
-          max_drawdown_usd?: number | null
-          profit_target_usd?: number | null
-          starting_balance_usd?: number | null
-          timezone?: string
-          updated_at?: string
-          user_id?: string
-        }
-        Relationships: []
-      }
+          account_name?: string | null;
+          consistency_rule_pct?: number | null;
+          created_at?: string;
+          daily_loss_limit_usd?: number | null;
+          drawdown_type?: Database["public"]["Enums"]["drawdown_type_enum"] | null;
+          max_contracts?: number | null;
+          max_drawdown_usd?: number | null;
+          profit_target_usd?: number | null;
+          starting_balance_usd?: number | null;
+          timezone?: string;
+          updated_at?: string;
+          user_id?: string;
+        };
+        Relationships: [];
+      };
       daily_preps: {
         Row: {
-          bias_outcome: Database["public"]["Enums"]["bias_outcome_enum"] | null
-          confidence: Database["public"]["Enums"]["confidence_enum"] | null
-          created_at: string
-          daily_bias: Database["public"]["Enums"]["daily_bias_enum"] | null
-          date: string
-          eod_notes: string | null
-          expected_amd_profile:
-            | Database["public"]["Enums"]["expected_amd_profile_enum"]
-            | null
-          game_plan: string | null
-          high_impact_news: boolean
-          htf_draw: string | null
-          id: string
-          invalidation_level: number | null
-          key_levels: string | null
-          news_events: string | null
-          updated_at: string
-          user_id: string
-          weekly_bias: Database["public"]["Enums"]["weekly_bias_enum"] | null
-          weekly_recap_id: string | null
-        }
+          bias_outcome: Database["public"]["Enums"]["bias_outcome_enum"] | null;
+          confidence: Database["public"]["Enums"]["confidence_enum"] | null;
+          created_at: string;
+          daily_bias: Database["public"]["Enums"]["daily_bias_enum"] | null;
+          date: string;
+          eod_notes: string | null;
+          expected_amd_profile: Database["public"]["Enums"]["expected_amd_profile_enum"] | null;
+          game_plan: string | null;
+          high_impact_news: boolean;
+          htf_draw: string | null;
+          id: string;
+          invalidation_level: number | null;
+          key_levels: string | null;
+          news_events: string | null;
+          updated_at: string;
+          user_id: string;
+          weekly_bias: Database["public"]["Enums"]["weekly_bias_enum"] | null;
+          weekly_recap_id: string | null;
+        };
         Insert: {
-          bias_outcome?: Database["public"]["Enums"]["bias_outcome_enum"] | null
-          confidence?: Database["public"]["Enums"]["confidence_enum"] | null
-          created_at?: string
-          daily_bias?: Database["public"]["Enums"]["daily_bias_enum"] | null
-          date: string
-          eod_notes?: string | null
-          expected_amd_profile?:
-            | Database["public"]["Enums"]["expected_amd_profile_enum"]
-            | null
-          game_plan?: string | null
-          high_impact_news?: boolean
-          htf_draw?: string | null
-          id?: string
-          invalidation_level?: number | null
-          key_levels?: string | null
-          news_events?: string | null
-          updated_at?: string
-          user_id?: string
-          weekly_bias?: Database["public"]["Enums"]["weekly_bias_enum"] | null
-          weekly_recap_id?: string | null
-        }
+          bias_outcome?: Database["public"]["Enums"]["bias_outcome_enum"] | null;
+          confidence?: Database["public"]["Enums"]["confidence_enum"] | null;
+          created_at?: string;
+          daily_bias?: Database["public"]["Enums"]["daily_bias_enum"] | null;
+          date: string;
+          eod_notes?: string | null;
+          expected_amd_profile?: Database["public"]["Enums"]["expected_amd_profile_enum"] | null;
+          game_plan?: string | null;
+          high_impact_news?: boolean;
+          htf_draw?: string | null;
+          id?: string;
+          invalidation_level?: number | null;
+          key_levels?: string | null;
+          news_events?: string | null;
+          updated_at?: string;
+          user_id?: string;
+          weekly_bias?: Database["public"]["Enums"]["weekly_bias_enum"] | null;
+          weekly_recap_id?: string | null;
+        };
         Update: {
-          bias_outcome?: Database["public"]["Enums"]["bias_outcome_enum"] | null
-          confidence?: Database["public"]["Enums"]["confidence_enum"] | null
-          created_at?: string
-          daily_bias?: Database["public"]["Enums"]["daily_bias_enum"] | null
-          date?: string
-          eod_notes?: string | null
-          expected_amd_profile?:
-            | Database["public"]["Enums"]["expected_amd_profile_enum"]
-            | null
-          game_plan?: string | null
-          high_impact_news?: boolean
-          htf_draw?: string | null
-          id?: string
-          invalidation_level?: number | null
-          key_levels?: string | null
-          news_events?: string | null
-          updated_at?: string
-          user_id?: string
-          weekly_bias?: Database["public"]["Enums"]["weekly_bias_enum"] | null
-          weekly_recap_id?: string | null
-        }
+          bias_outcome?: Database["public"]["Enums"]["bias_outcome_enum"] | null;
+          confidence?: Database["public"]["Enums"]["confidence_enum"] | null;
+          created_at?: string;
+          daily_bias?: Database["public"]["Enums"]["daily_bias_enum"] | null;
+          date?: string;
+          eod_notes?: string | null;
+          expected_amd_profile?: Database["public"]["Enums"]["expected_amd_profile_enum"] | null;
+          game_plan?: string | null;
+          high_impact_news?: boolean;
+          htf_draw?: string | null;
+          id?: string;
+          invalidation_level?: number | null;
+          key_levels?: string | null;
+          news_events?: string | null;
+          updated_at?: string;
+          user_id?: string;
+          weekly_bias?: Database["public"]["Enums"]["weekly_bias_enum"] | null;
+          weekly_recap_id?: string | null;
+        };
         Relationships: [
           {
-            foreignKeyName: "daily_preps_weekly_recap_id_fkey"
-            columns: ["weekly_recap_id"]
-            isOneToOne: false
-            referencedRelation: "weekly_recap_stats"
-            referencedColumns: ["weekly_recap_id"]
+            foreignKeyName: "daily_preps_weekly_recap_id_fkey";
+            columns: ["weekly_recap_id"];
+            isOneToOne: false;
+            referencedRelation: "weekly_recap_stats";
+            referencedColumns: ["weekly_recap_id"];
           },
           {
-            foreignKeyName: "daily_preps_weekly_recap_id_fkey"
-            columns: ["weekly_recap_id"]
-            isOneToOne: false
-            referencedRelation: "weekly_recaps"
-            referencedColumns: ["id"]
+            foreignKeyName: "daily_preps_weekly_recap_id_fkey";
+            columns: ["weekly_recap_id"];
+            isOneToOne: false;
+            referencedRelation: "weekly_recaps";
+            referencedColumns: ["id"];
           },
-        ]
-      }
+        ];
+      };
       model_rules: {
         Row: {
-          created_at: string
-          default_contracts: number | null
-          id: string
-          model: Database["public"]["Enums"]["model_enum"]
-          notes: string | null
-          stop_max_points: number | null
-          stop_min_points: number | null
-          updated_at: string
-          user_id: string
-        }
+          created_at: string;
+          default_contracts: number | null;
+          id: string;
+          model: Database["public"]["Enums"]["model_enum"];
+          notes: string | null;
+          stop_max_points: number | null;
+          stop_min_points: number | null;
+          updated_at: string;
+          user_id: string;
+        };
         Insert: {
-          created_at?: string
-          default_contracts?: number | null
-          id?: string
-          model: Database["public"]["Enums"]["model_enum"]
-          notes?: string | null
-          stop_max_points?: number | null
-          stop_min_points?: number | null
-          updated_at?: string
-          user_id?: string
-        }
+          created_at?: string;
+          default_contracts?: number | null;
+          id?: string;
+          model: Database["public"]["Enums"]["model_enum"];
+          notes?: string | null;
+          stop_max_points?: number | null;
+          stop_min_points?: number | null;
+          updated_at?: string;
+          user_id?: string;
+        };
         Update: {
-          created_at?: string
-          default_contracts?: number | null
-          id?: string
-          model?: Database["public"]["Enums"]["model_enum"]
-          notes?: string | null
-          stop_max_points?: number | null
-          stop_min_points?: number | null
-          updated_at?: string
-          user_id?: string
-        }
-        Relationships: []
-      }
+          created_at?: string;
+          default_contracts?: number | null;
+          id?: string;
+          model?: Database["public"]["Enums"]["model_enum"];
+          notes?: string | null;
+          stop_max_points?: number | null;
+          stop_min_points?: number | null;
+          updated_at?: string;
+          user_id?: string;
+        };
+        Relationships: [];
+      };
       theory_checklist_state: {
         Row: {
-          checked: boolean
-          id: string
-          item_key: string
-          theory_doc_id: string
-          updated_at: string
-          user_id: string
-        }
+          checked: boolean;
+          id: string;
+          item_key: string;
+          theory_doc_id: string;
+          updated_at: string;
+          user_id: string;
+        };
         Insert: {
-          checked?: boolean
-          id?: string
-          item_key: string
-          theory_doc_id: string
-          updated_at?: string
-          user_id?: string
-        }
+          checked?: boolean;
+          id?: string;
+          item_key: string;
+          theory_doc_id: string;
+          updated_at?: string;
+          user_id?: string;
+        };
         Update: {
-          checked?: boolean
-          id?: string
-          item_key?: string
-          theory_doc_id?: string
-          updated_at?: string
-          user_id?: string
-        }
+          checked?: boolean;
+          id?: string;
+          item_key?: string;
+          theory_doc_id?: string;
+          updated_at?: string;
+          user_id?: string;
+        };
         Relationships: [
           {
-            foreignKeyName: "theory_checklist_state_theory_doc_id_fkey"
-            columns: ["theory_doc_id"]
-            isOneToOne: false
-            referencedRelation: "theory_docs"
-            referencedColumns: ["id"]
+            foreignKeyName: "theory_checklist_state_theory_doc_id_fkey";
+            columns: ["theory_doc_id"];
+            isOneToOne: false;
+            referencedRelation: "theory_docs";
+            referencedColumns: ["id"];
           },
-        ]
-      }
+        ];
+      };
       theory_docs: {
         Row: {
-          body_md: string
-          category: Database["public"]["Enums"]["theory_category_enum"]
-          created_at: string
-          id: string
-          priority: Database["public"]["Enums"]["theory_priority_enum"]
-          search_vector: unknown
-          slug: string
-          summary: string | null
-          title: string
-          updated_at: string
-          use_for: Database["public"]["Enums"]["theory_use_for_enum"][]
-          user_id: string
-        }
+          body_md: string;
+          category: Database["public"]["Enums"]["theory_category_enum"];
+          created_at: string;
+          id: string;
+          priority: Database["public"]["Enums"]["theory_priority_enum"];
+          search_vector: unknown;
+          slug: string;
+          summary: string | null;
+          title: string;
+          updated_at: string;
+          use_for: Database["public"]["Enums"]["theory_use_for_enum"][];
+          user_id: string;
+        };
         Insert: {
-          body_md: string
-          category: Database["public"]["Enums"]["theory_category_enum"]
-          created_at?: string
-          id?: string
-          priority?: Database["public"]["Enums"]["theory_priority_enum"]
-          search_vector?: unknown
-          slug: string
-          summary?: string | null
-          title: string
-          updated_at?: string
-          use_for?: Database["public"]["Enums"]["theory_use_for_enum"][]
-          user_id?: string
-        }
+          body_md: string;
+          category: Database["public"]["Enums"]["theory_category_enum"];
+          created_at?: string;
+          id?: string;
+          priority?: Database["public"]["Enums"]["theory_priority_enum"];
+          search_vector?: unknown;
+          slug: string;
+          summary?: string | null;
+          title: string;
+          updated_at?: string;
+          use_for?: Database["public"]["Enums"]["theory_use_for_enum"][];
+          user_id?: string;
+        };
         Update: {
-          body_md?: string
-          category?: Database["public"]["Enums"]["theory_category_enum"]
-          created_at?: string
-          id?: string
-          priority?: Database["public"]["Enums"]["theory_priority_enum"]
-          search_vector?: unknown
-          slug?: string
-          summary?: string | null
-          title?: string
-          updated_at?: string
-          use_for?: Database["public"]["Enums"]["theory_use_for_enum"][]
-          user_id?: string
-        }
-        Relationships: []
-      }
+          body_md?: string;
+          category?: Database["public"]["Enums"]["theory_category_enum"];
+          created_at?: string;
+          id?: string;
+          priority?: Database["public"]["Enums"]["theory_priority_enum"];
+          search_vector?: unknown;
+          slug?: string;
+          summary?: string | null;
+          title?: string;
+          updated_at?: string;
+          use_for?: Database["public"]["Enums"]["theory_use_for_enum"][];
+          user_id?: string;
+        };
+        Relationships: [];
+      };
       trade_screenshots: {
         Row: {
-          created_at: string
-          id: string
-          kind: Database["public"]["Enums"]["screenshot_kind_enum"]
-          storage_path: string
-          trade_id: string
-          user_id: string
-        }
+          created_at: string;
+          id: string;
+          kind: Database["public"]["Enums"]["screenshot_kind_enum"];
+          storage_path: string;
+          trade_id: string;
+          user_id: string;
+        };
         Insert: {
-          created_at?: string
-          id?: string
-          kind: Database["public"]["Enums"]["screenshot_kind_enum"]
-          storage_path: string
-          trade_id: string
-          user_id?: string
-        }
+          created_at?: string;
+          id?: string;
+          kind: Database["public"]["Enums"]["screenshot_kind_enum"];
+          storage_path: string;
+          trade_id: string;
+          user_id?: string;
+        };
         Update: {
-          created_at?: string
-          id?: string
-          kind?: Database["public"]["Enums"]["screenshot_kind_enum"]
-          storage_path?: string
-          trade_id?: string
-          user_id?: string
-        }
+          created_at?: string;
+          id?: string;
+          kind?: Database["public"]["Enums"]["screenshot_kind_enum"];
+          storage_path?: string;
+          trade_id?: string;
+          user_id?: string;
+        };
         Relationships: [
           {
-            foreignKeyName: "trade_screenshots_trade_id_fkey"
-            columns: ["trade_id"]
-            isOneToOne: false
-            referencedRelation: "trades"
-            referencedColumns: ["id"]
+            foreignKeyName: "trade_screenshots_trade_id_fkey";
+            columns: ["trade_id"];
+            isOneToOne: false;
+            referencedRelation: "trades";
+            referencedColumns: ["id"];
           },
           {
-            foreignKeyName: "trade_screenshots_trade_id_fkey"
-            columns: ["trade_id"]
-            isOneToOne: false
-            referencedRelation: "trades_r"
-            referencedColumns: ["id"]
+            foreignKeyName: "trade_screenshots_trade_id_fkey";
+            columns: ["trade_id"];
+            isOneToOne: false;
+            referencedRelation: "trades_r";
+            referencedColumns: ["id"];
           },
-        ]
-      }
+        ];
+      };
       trades: {
         Row: {
-          amd_phase: Database["public"]["Enums"]["amd_phase_enum"] | null
-          bias_alignment:
-            | Database["public"]["Enums"]["bias_alignment_enum"]
-            | null
-          chart_url: string | null
-          contracts: number | null
-          created_at: string
-          daily_prep_id: string | null
-          date: string
-          direction: Database["public"]["Enums"]["direction_enum"]
-          emotion: Database["public"]["Enums"]["emotion_enum"] | null
-          entry_price: number | null
-          entry_reasoning: string | null
-          exit_price: number | null
-          followed_plan: boolean
-          id: string
-          instrument: Database["public"]["Enums"]["instrument_enum"]
-          lesson: string | null
-          mistakes: Database["public"]["Enums"]["mistake_enum"][]
-          models: Database["public"]["Enums"]["model_enum"][]
-          pnl_usd: number | null
-          result: Database["public"]["Enums"]["result_enum"] | null
-          risk_usd: number | null
-          session: Database["public"]["Enums"]["session_enum"]
-          setup_grade: Database["public"]["Enums"]["setup_grade_enum"] | null
-          stop_price: number | null
-          target_price: number | null
-          title: string
-          updated_at: string
-          user_id: string
-          weekly_recap_id: string | null
-        }
+          amd_phase: Database["public"]["Enums"]["amd_phase_enum"] | null;
+          bias_alignment: Database["public"]["Enums"]["bias_alignment_enum"] | null;
+          chart_url: string | null;
+          contracts: number | null;
+          created_at: string;
+          daily_prep_id: string | null;
+          date: string;
+          direction: Database["public"]["Enums"]["direction_enum"];
+          emotion: Database["public"]["Enums"]["emotion_enum"] | null;
+          entry_price: number | null;
+          entry_reasoning: string | null;
+          exit_price: number | null;
+          followed_plan: boolean;
+          id: string;
+          instrument: Database["public"]["Enums"]["instrument_enum"];
+          lesson: string | null;
+          mistakes: Database["public"]["Enums"]["mistake_enum"][];
+          models: Database["public"]["Enums"]["model_enum"][];
+          pnl_usd: number | null;
+          result: Database["public"]["Enums"]["result_enum"] | null;
+          risk_usd: number | null;
+          session: Database["public"]["Enums"]["session_enum"];
+          setup_grade: Database["public"]["Enums"]["setup_grade_enum"] | null;
+          stop_price: number | null;
+          target_price: number | null;
+          title: string;
+          updated_at: string;
+          user_id: string;
+          weekly_recap_id: string | null;
+        };
         Insert: {
-          amd_phase?: Database["public"]["Enums"]["amd_phase_enum"] | null
-          bias_alignment?:
-            | Database["public"]["Enums"]["bias_alignment_enum"]
-            | null
-          chart_url?: string | null
-          contracts?: number | null
-          created_at?: string
-          daily_prep_id?: string | null
-          date: string
-          direction: Database["public"]["Enums"]["direction_enum"]
-          emotion?: Database["public"]["Enums"]["emotion_enum"] | null
-          entry_price?: number | null
-          entry_reasoning?: string | null
-          exit_price?: number | null
-          followed_plan?: boolean
-          id?: string
-          instrument: Database["public"]["Enums"]["instrument_enum"]
-          lesson?: string | null
-          mistakes?: Database["public"]["Enums"]["mistake_enum"][]
-          models?: Database["public"]["Enums"]["model_enum"][]
-          pnl_usd?: number | null
-          result?: Database["public"]["Enums"]["result_enum"] | null
-          risk_usd?: number | null
-          session: Database["public"]["Enums"]["session_enum"]
-          setup_grade?: Database["public"]["Enums"]["setup_grade_enum"] | null
-          stop_price?: number | null
-          target_price?: number | null
-          title: string
-          updated_at?: string
-          user_id?: string
-          weekly_recap_id?: string | null
-        }
+          amd_phase?: Database["public"]["Enums"]["amd_phase_enum"] | null;
+          bias_alignment?: Database["public"]["Enums"]["bias_alignment_enum"] | null;
+          chart_url?: string | null;
+          contracts?: number | null;
+          created_at?: string;
+          daily_prep_id?: string | null;
+          date: string;
+          direction: Database["public"]["Enums"]["direction_enum"];
+          emotion?: Database["public"]["Enums"]["emotion_enum"] | null;
+          entry_price?: number | null;
+          entry_reasoning?: string | null;
+          exit_price?: number | null;
+          followed_plan?: boolean;
+          id?: string;
+          instrument: Database["public"]["Enums"]["instrument_enum"];
+          lesson?: string | null;
+          mistakes?: Database["public"]["Enums"]["mistake_enum"][];
+          models?: Database["public"]["Enums"]["model_enum"][];
+          pnl_usd?: number | null;
+          result?: Database["public"]["Enums"]["result_enum"] | null;
+          risk_usd?: number | null;
+          session: Database["public"]["Enums"]["session_enum"];
+          setup_grade?: Database["public"]["Enums"]["setup_grade_enum"] | null;
+          stop_price?: number | null;
+          target_price?: number | null;
+          title: string;
+          updated_at?: string;
+          user_id?: string;
+          weekly_recap_id?: string | null;
+        };
         Update: {
-          amd_phase?: Database["public"]["Enums"]["amd_phase_enum"] | null
-          bias_alignment?:
-            | Database["public"]["Enums"]["bias_alignment_enum"]
-            | null
-          chart_url?: string | null
-          contracts?: number | null
-          created_at?: string
-          daily_prep_id?: string | null
-          date?: string
-          direction?: Database["public"]["Enums"]["direction_enum"]
-          emotion?: Database["public"]["Enums"]["emotion_enum"] | null
-          entry_price?: number | null
-          entry_reasoning?: string | null
-          exit_price?: number | null
-          followed_plan?: boolean
-          id?: string
-          instrument?: Database["public"]["Enums"]["instrument_enum"]
-          lesson?: string | null
-          mistakes?: Database["public"]["Enums"]["mistake_enum"][]
-          models?: Database["public"]["Enums"]["model_enum"][]
-          pnl_usd?: number | null
-          result?: Database["public"]["Enums"]["result_enum"] | null
-          risk_usd?: number | null
-          session?: Database["public"]["Enums"]["session_enum"]
-          setup_grade?: Database["public"]["Enums"]["setup_grade_enum"] | null
-          stop_price?: number | null
-          target_price?: number | null
-          title?: string
-          updated_at?: string
-          user_id?: string
-          weekly_recap_id?: string | null
-        }
+          amd_phase?: Database["public"]["Enums"]["amd_phase_enum"] | null;
+          bias_alignment?: Database["public"]["Enums"]["bias_alignment_enum"] | null;
+          chart_url?: string | null;
+          contracts?: number | null;
+          created_at?: string;
+          daily_prep_id?: string | null;
+          date?: string;
+          direction?: Database["public"]["Enums"]["direction_enum"];
+          emotion?: Database["public"]["Enums"]["emotion_enum"] | null;
+          entry_price?: number | null;
+          entry_reasoning?: string | null;
+          exit_price?: number | null;
+          followed_plan?: boolean;
+          id?: string;
+          instrument?: Database["public"]["Enums"]["instrument_enum"];
+          lesson?: string | null;
+          mistakes?: Database["public"]["Enums"]["mistake_enum"][];
+          models?: Database["public"]["Enums"]["model_enum"][];
+          pnl_usd?: number | null;
+          result?: Database["public"]["Enums"]["result_enum"] | null;
+          risk_usd?: number | null;
+          session?: Database["public"]["Enums"]["session_enum"];
+          setup_grade?: Database["public"]["Enums"]["setup_grade_enum"] | null;
+          stop_price?: number | null;
+          target_price?: number | null;
+          title?: string;
+          updated_at?: string;
+          user_id?: string;
+          weekly_recap_id?: string | null;
+        };
         Relationships: [
           {
-            foreignKeyName: "trades_daily_prep_id_fkey"
-            columns: ["daily_prep_id"]
-            isOneToOne: false
-            referencedRelation: "daily_preps"
-            referencedColumns: ["id"]
+            foreignKeyName: "trades_daily_prep_id_fkey";
+            columns: ["daily_prep_id"];
+            isOneToOne: false;
+            referencedRelation: "daily_preps";
+            referencedColumns: ["id"];
           },
           {
-            foreignKeyName: "trades_weekly_recap_id_fkey"
-            columns: ["weekly_recap_id"]
-            isOneToOne: false
-            referencedRelation: "weekly_recap_stats"
-            referencedColumns: ["weekly_recap_id"]
+            foreignKeyName: "trades_weekly_recap_id_fkey";
+            columns: ["weekly_recap_id"];
+            isOneToOne: false;
+            referencedRelation: "weekly_recap_stats";
+            referencedColumns: ["weekly_recap_id"];
           },
           {
-            foreignKeyName: "trades_weekly_recap_id_fkey"
-            columns: ["weekly_recap_id"]
-            isOneToOne: false
-            referencedRelation: "weekly_recaps"
-            referencedColumns: ["id"]
+            foreignKeyName: "trades_weekly_recap_id_fkey";
+            columns: ["weekly_recap_id"];
+            isOneToOne: false;
+            referencedRelation: "weekly_recaps";
+            referencedColumns: ["id"];
           },
-        ]
-      }
+        ];
+      };
       weekly_recaps: {
         Row: {
-          created_at: string
-          focus_next_week: string | null
-          id: string
-          key_lessons: string | null
-          process_score: number | null
-          rule_breaks: number | null
-          updated_at: string
-          user_id: string
-          week_grade: Database["public"]["Enums"]["week_grade_enum"] | null
-          week_start: string
-          weekly_bias_correct:
-            | Database["public"]["Enums"]["weekly_bias_correct_enum"]
-            | null
-          what_failed: string | null
-          what_worked: string | null
-        }
+          created_at: string;
+          focus_next_week: string | null;
+          id: string;
+          key_lessons: string | null;
+          process_score: number | null;
+          rule_breaks: number | null;
+          updated_at: string;
+          user_id: string;
+          week_grade: Database["public"]["Enums"]["week_grade_enum"] | null;
+          week_start: string;
+          weekly_bias_correct: Database["public"]["Enums"]["weekly_bias_correct_enum"] | null;
+          what_failed: string | null;
+          what_worked: string | null;
+        };
         Insert: {
-          created_at?: string
-          focus_next_week?: string | null
-          id?: string
-          key_lessons?: string | null
-          process_score?: number | null
-          rule_breaks?: number | null
-          updated_at?: string
-          user_id?: string
-          week_grade?: Database["public"]["Enums"]["week_grade_enum"] | null
-          week_start: string
-          weekly_bias_correct?:
-            | Database["public"]["Enums"]["weekly_bias_correct_enum"]
-            | null
-          what_failed?: string | null
-          what_worked?: string | null
-        }
+          created_at?: string;
+          focus_next_week?: string | null;
+          id?: string;
+          key_lessons?: string | null;
+          process_score?: number | null;
+          rule_breaks?: number | null;
+          updated_at?: string;
+          user_id?: string;
+          week_grade?: Database["public"]["Enums"]["week_grade_enum"] | null;
+          week_start: string;
+          weekly_bias_correct?: Database["public"]["Enums"]["weekly_bias_correct_enum"] | null;
+          what_failed?: string | null;
+          what_worked?: string | null;
+        };
         Update: {
-          created_at?: string
-          focus_next_week?: string | null
-          id?: string
-          key_lessons?: string | null
-          process_score?: number | null
-          rule_breaks?: number | null
-          updated_at?: string
-          user_id?: string
-          week_grade?: Database["public"]["Enums"]["week_grade_enum"] | null
-          week_start?: string
-          weekly_bias_correct?:
-            | Database["public"]["Enums"]["weekly_bias_correct_enum"]
-            | null
-          what_failed?: string | null
-          what_worked?: string | null
-        }
-        Relationships: []
-      }
-    }
+          created_at?: string;
+          focus_next_week?: string | null;
+          id?: string;
+          key_lessons?: string | null;
+          process_score?: number | null;
+          rule_breaks?: number | null;
+          updated_at?: string;
+          user_id?: string;
+          week_grade?: Database["public"]["Enums"]["week_grade_enum"] | null;
+          week_start?: string;
+          weekly_bias_correct?: Database["public"]["Enums"]["weekly_bias_correct_enum"] | null;
+          what_failed?: string | null;
+          what_worked?: string | null;
+        };
+        Relationships: [];
+      };
+    };
     Views: {
       equity_curve: {
         Row: {
-          cumulative_pnl: number | null
-          cumulative_r: number | null
-          daily_pnl: number | null
-          daily_r: number | null
-          date: string | null
-          drawdown: number | null
-          running_peak: number | null
-          trade_count: number | null
-        }
-        Relationships: []
-      }
+          cumulative_pnl: number | null;
+          cumulative_r: number | null;
+          daily_pnl: number | null;
+          daily_r: number | null;
+          date: string | null;
+          drawdown: number | null;
+          running_peak: number | null;
+          trade_count: number | null;
+        };
+        Relationships: [];
+      };
       trades_r: {
         Row: {
-          amd_phase: Database["public"]["Enums"]["amd_phase_enum"] | null
-          bias_alignment:
-            | Database["public"]["Enums"]["bias_alignment_enum"]
-            | null
-          chart_url: string | null
-          contracts: number | null
-          created_at: string | null
-          daily_prep_id: string | null
-          date: string | null
-          direction: Database["public"]["Enums"]["direction_enum"] | null
-          emotion: Database["public"]["Enums"]["emotion_enum"] | null
-          entry_price: number | null
-          entry_reasoning: string | null
-          exit_price: number | null
-          followed_plan: boolean | null
-          id: string | null
-          instrument: Database["public"]["Enums"]["instrument_enum"] | null
-          lesson: string | null
-          mistakes: Database["public"]["Enums"]["mistake_enum"][] | null
-          models: Database["public"]["Enums"]["model_enum"][] | null
-          pnl_usd: number | null
-          r_multiple: number | null
-          result: Database["public"]["Enums"]["result_enum"] | null
-          risk_usd: number | null
-          session: Database["public"]["Enums"]["session_enum"] | null
-          setup_grade: Database["public"]["Enums"]["setup_grade_enum"] | null
-          stop_price: number | null
-          target_price: number | null
-          title: string | null
-          updated_at: string | null
-          user_id: string | null
-          weekly_recap_id: string | null
-        }
+          amd_phase: Database["public"]["Enums"]["amd_phase_enum"] | null;
+          bias_alignment: Database["public"]["Enums"]["bias_alignment_enum"] | null;
+          chart_url: string | null;
+          contracts: number | null;
+          created_at: string | null;
+          daily_prep_id: string | null;
+          date: string | null;
+          direction: Database["public"]["Enums"]["direction_enum"] | null;
+          emotion: Database["public"]["Enums"]["emotion_enum"] | null;
+          entry_price: number | null;
+          entry_reasoning: string | null;
+          exit_price: number | null;
+          followed_plan: boolean | null;
+          id: string | null;
+          instrument: Database["public"]["Enums"]["instrument_enum"] | null;
+          lesson: string | null;
+          mistakes: Database["public"]["Enums"]["mistake_enum"][] | null;
+          models: Database["public"]["Enums"]["model_enum"][] | null;
+          pnl_usd: number | null;
+          r_multiple: number | null;
+          result: Database["public"]["Enums"]["result_enum"] | null;
+          risk_usd: number | null;
+          session: Database["public"]["Enums"]["session_enum"] | null;
+          setup_grade: Database["public"]["Enums"]["setup_grade_enum"] | null;
+          stop_price: number | null;
+          target_price: number | null;
+          title: string | null;
+          updated_at: string | null;
+          user_id: string | null;
+          weekly_recap_id: string | null;
+        };
         Relationships: [
           {
-            foreignKeyName: "trades_daily_prep_id_fkey"
-            columns: ["daily_prep_id"]
-            isOneToOne: false
-            referencedRelation: "daily_preps"
-            referencedColumns: ["id"]
+            foreignKeyName: "trades_daily_prep_id_fkey";
+            columns: ["daily_prep_id"];
+            isOneToOne: false;
+            referencedRelation: "daily_preps";
+            referencedColumns: ["id"];
           },
           {
-            foreignKeyName: "trades_weekly_recap_id_fkey"
-            columns: ["weekly_recap_id"]
-            isOneToOne: false
-            referencedRelation: "weekly_recap_stats"
-            referencedColumns: ["weekly_recap_id"]
+            foreignKeyName: "trades_weekly_recap_id_fkey";
+            columns: ["weekly_recap_id"];
+            isOneToOne: false;
+            referencedRelation: "weekly_recap_stats";
+            referencedColumns: ["weekly_recap_id"];
           },
           {
-            foreignKeyName: "trades_weekly_recap_id_fkey"
-            columns: ["weekly_recap_id"]
-            isOneToOne: false
-            referencedRelation: "weekly_recaps"
-            referencedColumns: ["id"]
+            foreignKeyName: "trades_weekly_recap_id_fkey";
+            columns: ["weekly_recap_id"];
+            isOneToOne: false;
+            referencedRelation: "weekly_recaps";
+            referencedColumns: ["id"];
           },
-        ]
-      }
+        ];
+      };
       weekly_recap_stats: {
         Row: {
-          net_pnl: number | null
-          total_r: number | null
-          trade_count: number | null
-          user_id: string | null
-          week_start: string | null
-          weekly_recap_id: string | null
-        }
-        Relationships: []
-      }
-    }
+          net_pnl: number | null;
+          total_r: number | null;
+          trade_count: number | null;
+          user_id: string | null;
+          week_start: string | null;
+          weekly_recap_id: string | null;
+        };
+        Relationships: [];
+      };
+    };
     Functions: {
       fn_bias_accuracy: {
-        Args: { p_end?: string; p_start?: string }
-        Returns: { accuracy_pct: number; graded_days: number }[]
-      }
+        Args: { p_end?: string; p_start?: string };
+        Returns: { accuracy_pct: number; graded_days: number }[];
+      };
       fn_dashboard_kpis: {
-        Args: { p_end?: string; p_start?: string }
+        Args: { p_end?: string; p_start?: string };
         Returns: {
-          avg_loss_r: number
-          avg_win_r: number
-          best_loss_streak: number
-          best_win_streak: number
-          current_streak: number
-          current_streak_type: string
-          expectancy_r: number
-          expectancy_usd: number
-          max_drawdown: number
-          net_pnl: number
-          profit_factor: number
-          rule_break_count: number
-          trade_count: number
-          win_rate: number
-        }[]
-      }
+          avg_loss_r: number;
+          avg_win_r: number;
+          best_loss_streak: number;
+          best_win_streak: number;
+          current_streak: number;
+          current_streak_type: string;
+          expectancy_r: number;
+          expectancy_usd: number;
+          max_drawdown: number;
+          net_pnl: number;
+          profit_factor: number;
+          rule_break_count: number;
+          trade_count: number;
+          win_rate: number;
+        }[];
+      };
       fn_stats_by_amd_phase: {
-        Args: { p_end?: string; p_start?: string }
-        Returns: StatsRow[]
-      }
+        Args: { p_end?: string; p_start?: string };
+        Returns: StatsRow[];
+      };
       fn_stats_by_bias_alignment: {
-        Args: { p_end?: string; p_start?: string }
-        Returns: StatsRow[]
-      }
+        Args: { p_end?: string; p_start?: string };
+        Returns: StatsRow[];
+      };
       fn_stats_by_emotion: {
-        Args: { p_end?: string; p_start?: string }
-        Returns: StatsRow[]
-      }
+        Args: { p_end?: string; p_start?: string };
+        Returns: StatsRow[];
+      };
       fn_stats_by_followed_plan: {
-        Args: { p_end?: string; p_start?: string }
-        Returns: StatsRow[]
-      }
+        Args: { p_end?: string; p_start?: string };
+        Returns: StatsRow[];
+      };
       fn_stats_by_grade: {
-        Args: { p_end?: string; p_start?: string }
-        Returns: StatsRow[]
-      }
+        Args: { p_end?: string; p_start?: string };
+        Returns: StatsRow[];
+      };
       fn_stats_by_instrument: {
-        Args: { p_end?: string; p_start?: string }
-        Returns: StatsRow[]
-      }
+        Args: { p_end?: string; p_start?: string };
+        Returns: StatsRow[];
+      };
       fn_stats_by_mistake: {
-        Args: { p_end?: string; p_start?: string }
-        Returns: StatsRow[]
-      }
+        Args: { p_end?: string; p_start?: string };
+        Returns: StatsRow[];
+      };
       fn_stats_by_model: {
-        Args: { p_end?: string; p_start?: string }
-        Returns: StatsRow[]
-      }
+        Args: { p_end?: string; p_start?: string };
+        Returns: StatsRow[];
+      };
       fn_stats_by_session: {
-        Args: { p_end?: string; p_start?: string }
-        Returns: StatsRow[]
-      }
+        Args: { p_end?: string; p_start?: string };
+        Returns: StatsRow[];
+      };
       fn_stats_by_weekday: {
-        Args: { p_end?: string; p_start?: string }
-        Returns: StatsRow[]
-      }
-    }
+        Args: { p_end?: string; p_start?: string };
+        Returns: StatsRow[];
+      };
+    };
     Enums: {
-      amd_phase_enum: "Accumulation" | "Manipulation" | "Distribution" | "Unclear"
-      bias_alignment_enum: "With Bias" | "Against Bias" | "No Bias"
-      bias_outcome_enum: "Correct" | "Partial" | "Wrong" | "No Trade Day"
-      confidence_enum: "High" | "Medium" | "Low"
-      daily_bias_enum: "Bullish" | "Bearish" | "Neutral" | "No Trade"
-      direction_enum: "Long" | "Short"
-      drawdown_type_enum: "static" | "trailing" | "eod_trailing"
+      amd_phase_enum: "Accumulation" | "Manipulation" | "Distribution" | "Unclear";
+      bias_alignment_enum: "With Bias" | "Against Bias" | "No Bias";
+      bias_outcome_enum: "Correct" | "Partial" | "Wrong" | "No Trade Day";
+      confidence_enum: "High" | "Medium" | "Low";
+      daily_bias_enum: "Bullish" | "Bearish" | "Neutral" | "No Trade";
+      direction_enum: "Long" | "Short";
+      drawdown_type_enum: "static" | "trailing" | "eod_trailing";
       emotion_enum:
-        | "Calm"
-        | "Confident"
-        | "FOMO"
-        | "Revenge"
-        | "Fear"
-        | "Hesitant"
-        | "Overconfident"
+        "Calm" | "Confident" | "FOMO" | "Revenge" | "Fear" | "Hesitant" | "Overconfident";
       expected_amd_profile_enum:
         | "Classic (Judas then reversal)"
         | "Continuation (no reversal)"
         | "Reversal of prior day"
-        | "Consolidation / Chop"
-      instrument_enum: "MNQ" | "NQ" | "MES" | "ES" | "ETH" | "Other"
+        | "Consolidation / Chop";
+      instrument_enum: "MNQ" | "NQ" | "MES" | "ES" | "ETH" | "Other";
       mistake_enum:
         | "Early entry"
         | "Late entry"
@@ -663,7 +631,7 @@ export type Database = {
         | "Traded against bias"
         | "Cut winner early"
         | "Overtraded"
-        | "None"
+        | "None";
       model_enum:
         | "10am Powell (ATM)"
         | "Rejection Block"
@@ -675,11 +643,11 @@ export type Database = {
         | "SMT Divergence"
         | "Silver Bullet"
         | "Judas Swing"
-        | "Other"
-      result_enum: "Win" | "Loss" | "Break Even"
-      screenshot_kind_enum: "before" | "after"
-      session_enum: "Asia" | "London" | "NY AM" | "NY Lunch" | "NY PM"
-      setup_grade_enum: "A+" | "A" | "B" | "C"
+        | "Other";
+      result_enum: "Win" | "Loss" | "Break Even";
+      screenshot_kind_enum: "before" | "after";
+      session_enum: "Asia" | "London" | "NY AM" | "NY Lunch" | "NY PM";
+      setup_grade_enum: "A+" | "A" | "B" | "C";
       theory_category_enum:
         | "Framework"
         | "Time & Session"
@@ -687,51 +655,45 @@ export type Database = {
         | "Liquidity"
         | "Structure"
         | "Bias Process"
-        | "Risk & Psychology"
-      theory_priority_enum: "Core" | "Secondary" | "Advanced"
+        | "Risk & Psychology";
+      theory_priority_enum: "Core" | "Secondary" | "Advanced";
       theory_use_for_enum:
-        | "Daily Bias"
-        | "Entry Model"
-        | "Confirmation"
-        | "Targeting"
-        | "Invalidation"
-      week_grade_enum: "A" | "B" | "C" | "D" | "F"
-      weekly_bias_correct_enum: "Yes" | "Partial" | "No"
-      weekly_bias_enum: "Bullish" | "Bearish" | "Neutral"
-    }
+        "Daily Bias" | "Entry Model" | "Confirmation" | "Targeting" | "Invalidation";
+      week_grade_enum: "A" | "B" | "C" | "D" | "F";
+      weekly_bias_correct_enum: "Yes" | "Partial" | "No";
+      weekly_bias_enum: "Bullish" | "Bearish" | "Neutral";
+    };
     CompositeTypes: {
-      [_ in never]: never
-    }
-  }
-}
+      [_ in never]: never;
+    };
+  };
+};
 
 type StatsRow = {
-  dimension: string
-  n: number
-  wins: number
-  losses: number
-  win_rate: number
-  avg_r: number
-  expectancy: number
-  total_pnl: number
-}
+  dimension: string;
+  n: number;
+  wins: number;
+  losses: number;
+  win_rate: number;
+  avg_r: number;
+  expectancy: number;
+  total_pnl: number;
+};
 
-type DatabaseWithoutInternals = Omit<Database, "__InternalSupabase">
-type DefaultSchema = DatabaseWithoutInternals["public"]
+type DatabaseWithoutInternals = Omit<Database, "__InternalSupabase">;
+type DefaultSchema = DatabaseWithoutInternals["public"];
 
-export type Tables<
-  T extends keyof (DefaultSchema["Tables"] & DefaultSchema["Views"]),
-> = (DefaultSchema["Tables"] & DefaultSchema["Views"])[T] extends {
-  Row: infer R
-}
-  ? R
-  : never
+export type Tables<T extends keyof (DefaultSchema["Tables"] & DefaultSchema["Views"])> =
+  (DefaultSchema["Tables"] & DefaultSchema["Views"])[T] extends {
+    Row: infer R;
+  }
+    ? R
+    : never;
 
 export type TablesInsert<T extends keyof DefaultSchema["Tables"]> =
-  DefaultSchema["Tables"][T] extends { Insert: infer I } ? I : never
+  DefaultSchema["Tables"][T] extends { Insert: infer I } ? I : never;
 
 export type TablesUpdate<T extends keyof DefaultSchema["Tables"]> =
-  DefaultSchema["Tables"][T] extends { Update: infer U } ? U : never
+  DefaultSchema["Tables"][T] extends { Update: infer U } ? U : never;
 
-export type Enums<T extends keyof DefaultSchema["Enums"]> =
-  DefaultSchema["Enums"][T]
+export type Enums<T extends keyof DefaultSchema["Enums"]> = DefaultSchema["Enums"][T];

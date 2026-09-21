@@ -72,10 +72,10 @@ const FN_BY_DIMENSION: Record<StatsDimension, string> = {
 
 export async function getStatsBy(dimension: StatsDimension, range: DateRange = {}) {
   const supabase = await createClient();
-  const { data, error } = await supabase.rpc(
-    FN_BY_DIMENSION[dimension] as "fn_stats_by_session",
-    { p_start: range.start, p_end: range.end },
-  );
+  const { data, error } = await supabase.rpc(FN_BY_DIMENSION[dimension] as "fn_stats_by_session", {
+    p_start: range.start,
+    p_end: range.end,
+  });
   if (error) throw error;
   return data;
 }

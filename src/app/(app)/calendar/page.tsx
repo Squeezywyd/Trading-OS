@@ -10,7 +10,8 @@ export default async function CalendarPage({
   searchParams: Promise<{ month?: string }>;
 }) {
   const { month: monthParam } = await searchParams;
-  const anchor = monthParam && /^\d{4}-\d{2}$/.test(monthParam) ? new Date(`${monthParam}-01`) : new Date();
+  const anchor =
+    monthParam && /^\d{4}-\d{2}$/.test(monthParam) ? new Date(`${monthParam}-01`) : new Date();
   const monthStart = startOfMonth(anchor);
   const monthEnd = endOfMonth(anchor);
   const start = format(monthStart, "yyyy-MM-dd");
@@ -37,7 +38,10 @@ export default async function CalendarPage({
 
   return (
     <>
-      <PageHeader title="Calendar" description="Daily P&L, trade count, and bias outcome at a glance." />
+      <PageHeader
+        title="Calendar"
+        description="Daily P&L, trade count, and bias outcome at a glance."
+      />
       <MonthCalendar
         month={format(monthStart, "yyyy-MM")}
         prevMonth={format(addMonths(monthStart, -1), "yyyy-MM")}

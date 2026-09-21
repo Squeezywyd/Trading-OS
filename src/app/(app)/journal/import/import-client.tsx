@@ -70,7 +70,9 @@ export function ImportCsvClient() {
         <div className="glass-panel p-4">
           <div className="mb-3 flex items-center justify-between">
             <div className="flex items-center gap-2 text-sm">
-              <Badge variant="outline" className="text-profit">{validRows.length} ready</Badge>
+              <Badge variant="outline" className="text-profit">
+                {validRows.length} ready
+              </Badge>
               {invalidRows.length > 0 ? (
                 <Badge variant="outline" className="text-loss">
                   <FileWarning className="mr-1 size-3" />

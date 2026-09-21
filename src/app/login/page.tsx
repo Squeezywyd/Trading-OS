@@ -12,9 +12,7 @@ export default function LoginPage() {
           </div>
           <div>
             <h1 className="text-lg font-semibold tracking-tight">Trading OS</h1>
-            <p className="text-muted-foreground text-sm">
-              ICT/SMC bias, journal &amp; analytics
-            </p>
+            <p className="text-muted-foreground text-sm">ICT/SMC bias, journal &amp; analytics</p>
           </div>
         </div>
 
@@ -25,8 +23,7 @@ export default function LoginPage() {
         </div>
 
         <p className="text-muted-foreground mt-6 text-center text-xs">
-          Single-user system. Sign-ups are disabled — this account was created directly in
-          Supabase.
+          Single-user system. Sign-ups are disabled — this account was created directly in Supabase.
         </p>
       </div>
     </div>

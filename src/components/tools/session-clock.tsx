@@ -16,7 +16,12 @@ import { Badge } from "@/components/ui/badge";
 
 function formatClock(date: Date, tz: string) {
   const zoned = toZonedTime(date, tz);
-  return zoned.toLocaleTimeString("en-US", { hour: "2-digit", minute: "2-digit", second: "2-digit", hour12: false });
+  return zoned.toLocaleTimeString("en-US", {
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+    hour12: false,
+  });
 }
 
 export function SessionClock() {
@@ -47,11 +52,15 @@ export function SessionClock() {
       <div className="grid grid-cols-2 gap-4">
         <div>
           <p className="label-muted">New York</p>
-          <p className="mt-1 font-mono text-2xl font-semibold tabular-nums">{formatClock(now, NY_TZ)}</p>
+          <p className="mt-1 font-mono text-2xl font-semibold tabular-nums">
+            {formatClock(now, NY_TZ)}
+          </p>
         </div>
         <div>
           <p className="label-muted">Zurich</p>
-          <p className="mt-1 font-mono text-2xl font-semibold tabular-nums">{formatClock(now, ZURICH_TZ)}</p>
+          <p className="mt-1 font-mono text-2xl font-semibold tabular-nums">
+            {formatClock(now, ZURICH_TZ)}
+          </p>
         </div>
       </div>
 
@@ -79,14 +88,20 @@ export function SessionClock() {
           <p className="text-muted-foreground text-xs">Next killzone</p>
           <p className="font-medium">
             {nextKillzone.w.label}
-            <span className="text-muted-foreground font-mono text-xs tabular-nums"> · {formatMinutesAsHm(nextKillzone.mins)}</span>
+            <span className="text-muted-foreground font-mono text-xs tabular-nums">
+              {" "}
+              · {formatMinutesAsHm(nextKillzone.mins)}
+            </span>
           </p>
         </div>
         <div>
           <p className="text-muted-foreground text-xs">Next Silver Bullet</p>
           <p className="font-medium">
             {nextSilverBullet.w.label}
-            <span className="text-muted-foreground font-mono text-xs tabular-nums"> · {formatMinutesAsHm(nextSilverBullet.mins)}</span>
+            <span className="text-muted-foreground font-mono text-xs tabular-nums">
+              {" "}
+              · {formatMinutesAsHm(nextSilverBullet.mins)}
+            </span>
           </p>
         </div>
       </div>
@@ -96,14 +111,17 @@ export function SessionClock() {
         <div className="space-y-1">
           {ALL_WINDOWS.map((w) => {
             const isActive = active.some((a) => a.key === w.key);
-            const h = (m: number) => `${String(Math.floor(m / 60)).padStart(2, "0")}:${String(m % 60).padStart(2, "0")}`;
+            const h = (m: number) =>
+              `${String(Math.floor(m / 60)).padStart(2, "0")}:${String(m % 60).padStart(2, "0")}`;
             return (
               <div
                 key={w.key}
                 className={`flex items-center justify-between rounded-md px-2 py-1 text-xs ${isActive ? "bg-primary/10 text-foreground" : "text-muted-foreground"}`}
               >
                 <span>{w.label}</span>
-                <span className="font-mono tabular-nums">{h(w.startMinute)}–{h(w.endMinute)}</span>
+                <span className="font-mono tabular-nums">
+                  {h(w.startMinute)}–{h(w.endMinute)}
+                </span>
               </div>
             );
           })}

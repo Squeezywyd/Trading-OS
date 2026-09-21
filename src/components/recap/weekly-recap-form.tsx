@@ -28,12 +28,14 @@ function draftText(stats: WeeklyRecapStats | null, modelStats: StatsRow[]) {
   const best = [...modelStats].sort((a, b) => (b.expectancy ?? 0) - (a.expectancy ?? 0))[0];
   const worst = [...modelStats].sort((a, b) => (a.expectancy ?? 0) - (b.expectancy ?? 0))[0];
   return {
-    worked: best && best.expectancy != null && best.expectancy > 0
-      ? `${best.dimension} performed best (${best.n} trades, ${best.win_rate?.toFixed(0)}% win rate, $${best.expectancy.toFixed(0)} avg).`
-      : "",
-    failed: worst && worst.expectancy != null && worst.expectancy < 0
-      ? `${worst.dimension} was the weak spot (${worst.n} trades, ${worst.win_rate?.toFixed(0)}% win rate, $${worst.expectancy.toFixed(0)} avg).`
-      : "",
+    worked:
+      best && best.expectancy != null && best.expectancy > 0
+        ? `${best.dimension} performed best (${best.n} trades, ${best.win_rate?.toFixed(0)}% win rate, $${best.expectancy.toFixed(0)} avg).`
+        : "",
+    failed:
+      worst && worst.expectancy != null && worst.expectancy < 0
+        ? `${worst.dimension} was the weak spot (${worst.n} trades, ${worst.win_rate?.toFixed(0)}% win rate, $${worst.expectancy.toFixed(0)} avg).`
+        : "",
   };
 }
 
@@ -88,18 +90,28 @@ export function WeeklyRecapForm({
       <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
         <div className="glass-panel p-4">
           <p className="label-muted">Net P&amp;L</p>
-          <p className={`mt-1 font-mono text-xl font-semibold tabular-nums ${stats && (stats.net_pnl ?? 0) >= 0 ? "text-profit" : "text-loss"}`}>
-            {stats ? `${(stats.net_pnl ?? 0) >= 0 ? "+" : "-"}$${Math.abs(stats.net_pnl ?? 0).toFixed(0)}` : "—"}
+          <p
+            className={`mt-1 font-mono text-xl font-semibold tabular-nums ${stats && (stats.net_pnl ?? 0) >= 0 ? "text-profit" : "text-loss"}`}
+          >
+            {stats
+              ? `${(stats.net_pnl ?? 0) >= 0 ? "+" : "-"}$${Math.abs(stats.net_pnl ?? 0).toFixed(0)}`
+              : "—"}
           </p>
         </div>
         <div className="glass-panel p-4">
           <p className="label-muted">Trades</p>
-          <p className="mt-1 font-mono text-xl font-semibold tabular-nums">{stats?.trade_count ?? 0}</p>
+          <p className="mt-1 font-mono text-xl font-semibold tabular-nums">
+            {stats?.trade_count ?? 0}
+          </p>
         </div>
         <div className="glass-panel p-4">
           <p className="label-muted">Total R</p>
-          <p className={`mt-1 font-mono text-xl font-semibold tabular-nums ${stats && (stats.total_r ?? 0) >= 0 ? "text-profit" : "text-loss"}`}>
-            {stats ? `${(stats.total_r ?? 0) >= 0 ? "+" : ""}${(stats.total_r ?? 0).toFixed(2)}R` : "—"}
+          <p
+            className={`mt-1 font-mono text-xl font-semibold tabular-nums ${stats && (stats.total_r ?? 0) >= 0 ? "text-profit" : "text-loss"}`}
+          >
+            {stats
+              ? `${(stats.total_r ?? 0) >= 0 ? "+" : ""}${(stats.total_r ?? 0).toFixed(2)}R`
+              : "—"}
           </p>
         </div>
       </div>
@@ -115,9 +127,15 @@ export function WeeklyRecapForm({
                   name="week_grade"
                   render={({ field }) => (
                     <Select value={field.value ?? undefined} onValueChange={field.onChange}>
-                      <SelectTrigger className="w-full"><SelectValue placeholder="—" /></SelectTrigger>
+                      <SelectTrigger className="w-full">
+                        <SelectValue placeholder="—" />
+                      </SelectTrigger>
                       <SelectContent>
-                        {WEEK_GRADES.map((v) => <SelectItem key={v} value={v}>{v}</SelectItem>)}
+                        {WEEK_GRADES.map((v) => (
+                          <SelectItem key={v} value={v}>
+                            {v}
+                          </SelectItem>
+                        ))}
                       </SelectContent>
                     </Select>
                   )}
@@ -128,14 +146,27 @@ export function WeeklyRecapForm({
             <Field>
               <FieldLabel htmlFor="process_score">Process score (1-10)</FieldLabel>
               <FieldContent>
-                <Input id="process_score" type="number" min={1} max={10} className="font-mono tabular-nums" {...register("process_score")} />
+                <Input
+                  id="process_score"
+                  type="number"
+                  min={1}
+                  max={10}
+                  className="font-mono tabular-nums"
+                  {...register("process_score")}
+                />
               </FieldContent>
             </Field>
 
             <Field>
               <FieldLabel htmlFor="rule_breaks">Rule breaks</FieldLabel>
               <FieldContent>
-                <Input id="rule_breaks" type="number" min={0} className="font-mono tabular-nums" {...register("rule_breaks")} />
+                <Input
+                  id="rule_breaks"
+                  type="number"
+                  min={0}
+                  className="font-mono tabular-nums"
+                  {...register("rule_breaks")}
+                />
               </FieldContent>
             </Field>
           </div>
@@ -148,9 +179,15 @@ export function WeeklyRecapForm({
                 name="weekly_bias_correct"
                 render={({ field }) => (
                   <Select value={field.value ?? undefined} onValueChange={field.onChange}>
-                    <SelectTrigger className="w-full"><SelectValue placeholder="—" /></SelectTrigger>
+                    <SelectTrigger className="w-full">
+                      <SelectValue placeholder="—" />
+                    </SelectTrigger>
                     <SelectContent>
-                      {WEEKLY_BIAS_CORRECT_VALUES.map((v) => <SelectItem key={v} value={v}>{v}</SelectItem>)}
+                      {WEEKLY_BIAS_CORRECT_VALUES.map((v) => (
+                        <SelectItem key={v} value={v}>
+                          {v}
+                        </SelectItem>
+                      ))}
                     </SelectContent>
                   </Select>
                 )}

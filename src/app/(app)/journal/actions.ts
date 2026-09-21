@@ -3,6 +3,7 @@
 import { revalidatePath } from "next/cache";
 import { tradeFormSchema } from "@/lib/validation/trade";
 import { createTrade, deleteTrade, updateTrade } from "@/lib/data/trades";
+import { deleteScreenshot } from "@/lib/data/screenshots";
 
 export interface ActionResult {
   success: boolean;
@@ -100,5 +101,19 @@ export async function deleteTradeAction(id: string): Promise<ActionResult> {
   revalidatePath("/dashboard");
   revalidatePath("/calendar");
   revalidatePath("/analytics");
+  return { success: true };
+}
+
+export async function deleteScreenshotAction(
+  id: string,
+  storagePath: string,
+  tradeId: string,
+): Promise<ActionResult> {
+  try {
+    await deleteScreenshot(id, storagePath);
+  } catch (err) {
+    return { success: false, error: err instanceof Error ? err.message : "Failed to delete" };
+  }
+  revalidatePath(`/journal/${tradeId}/edit`);
   return { success: true };
 }

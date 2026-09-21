@@ -41,7 +41,15 @@ export function LinkedTrades({ trades }: { trades: TradeWithR[] }) {
                     {t.r_multiple.toFixed(2)}R
                   </span>
                 ) : null}
-                <span className={t.result === "Win" ? "text-profit" : t.result === "Loss" ? "text-loss" : "text-muted-foreground"}>
+                <span
+                  className={
+                    t.result === "Win"
+                      ? "text-profit"
+                      : t.result === "Loss"
+                        ? "text-loss"
+                        : "text-muted-foreground"
+                  }
+                >
                   {t.result ?? "—"}
                 </span>
               </div>

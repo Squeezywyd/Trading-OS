@@ -13,7 +13,9 @@
     "test:e2e": "playwright test",
     "seed": "tsx scripts/seed.ts",
     "seed:demo": "tsx scripts/seed.ts --demo",
-    "db:types": "supabase gen types typescript --project-id ypfrgpanegzmclnbygbl > src/lib/supabase/database.types.ts"
+    "db:types": "supabase gen types typescript --project-id ypfrgpanegzmclnbygbl > src/lib/supabase/database.types.ts",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
   },
   "dependencies": {
     "@base-ui/react": "^1.8.0",

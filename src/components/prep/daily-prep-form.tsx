@@ -86,9 +86,15 @@ export function DailyPrepForm({ date, prep }: { date: string; prep?: DailyPrep |
                 name="weekly_bias"
                 render={({ field }) => (
                   <Select value={field.value ?? undefined} onValueChange={field.onChange}>
-                    <SelectTrigger className="w-full"><SelectValue placeholder="—" /></SelectTrigger>
+                    <SelectTrigger className="w-full">
+                      <SelectValue placeholder="—" />
+                    </SelectTrigger>
                     <SelectContent>
-                      {WEEKLY_BIAS_VALUES.map((v) => <SelectItem key={v} value={v}>{v}</SelectItem>)}
+                      {WEEKLY_BIAS_VALUES.map((v) => (
+                        <SelectItem key={v} value={v}>
+                          {v}
+                        </SelectItem>
+                      ))}
                     </SelectContent>
                   </Select>
                 )}
@@ -104,9 +110,15 @@ export function DailyPrepForm({ date, prep }: { date: string; prep?: DailyPrep |
                 name="daily_bias"
                 render={({ field }) => (
                   <Select value={field.value ?? undefined} onValueChange={field.onChange}>
-                    <SelectTrigger className="w-full"><SelectValue placeholder="—" /></SelectTrigger>
+                    <SelectTrigger className="w-full">
+                      <SelectValue placeholder="—" />
+                    </SelectTrigger>
                     <SelectContent>
-                      {DAILY_BIAS_VALUES.map((v) => <SelectItem key={v} value={v}>{v}</SelectItem>)}
+                      {DAILY_BIAS_VALUES.map((v) => (
+                        <SelectItem key={v} value={v}>
+                          {v}
+                        </SelectItem>
+                      ))}
                     </SelectContent>
                   </Select>
                 )}
@@ -122,9 +134,15 @@ export function DailyPrepForm({ date, prep }: { date: string; prep?: DailyPrep |
                 name="confidence"
                 render={({ field }) => (
                   <Select value={field.value ?? undefined} onValueChange={field.onChange}>
-                    <SelectTrigger className="w-full"><SelectValue placeholder="—" /></SelectTrigger>
+                    <SelectTrigger className="w-full">
+                      <SelectValue placeholder="—" />
+                    </SelectTrigger>
                     <SelectContent>
-                      {CONFIDENCE_LEVELS.map((v) => <SelectItem key={v} value={v}>{v}</SelectItem>)}
+                      {CONFIDENCE_LEVELS.map((v) => (
+                        <SelectItem key={v} value={v}>
+                          {v}
+                        </SelectItem>
+                      ))}
                     </SelectContent>
                   </Select>
                 )}
@@ -151,7 +169,13 @@ export function DailyPrepForm({ date, prep }: { date: string; prep?: DailyPrep |
         <Field>
           <FieldLabel htmlFor="invalidation_level">Invalidation level</FieldLabel>
           <FieldContent className="max-w-40">
-            <Input id="invalidation_level" type="number" step="any" className="font-mono tabular-nums" {...register("invalidation_level")} />
+            <Input
+              id="invalidation_level"
+              type="number"
+              step="any"
+              className="font-mono tabular-nums"
+              {...register("invalidation_level")}
+            />
           </FieldContent>
         </Field>
       </div>
@@ -173,9 +197,15 @@ export function DailyPrepForm({ date, prep }: { date: string; prep?: DailyPrep |
                 name="expected_amd_profile"
                 render={({ field }) => (
                   <Select value={field.value ?? undefined} onValueChange={field.onChange}>
-                    <SelectTrigger className="w-full"><SelectValue placeholder="—" /></SelectTrigger>
+                    <SelectTrigger className="w-full">
+                      <SelectValue placeholder="—" />
+                    </SelectTrigger>
                     <SelectContent>
-                      {EXPECTED_AMD_PROFILES.map((v) => <SelectItem key={v} value={v}>{v}</SelectItem>)}
+                      {EXPECTED_AMD_PROFILES.map((v) => (
+                        <SelectItem key={v} value={v}>
+                          {v}
+                        </SelectItem>
+                      ))}
                     </SelectContent>
                   </Select>
                 )}
@@ -190,7 +220,11 @@ export function DailyPrepForm({ date, prep }: { date: string; prep?: DailyPrep |
             control={control}
             name="high_impact_news"
             render={({ field }) => (
-              <Switch id="high_impact_news" checked={field.value} onCheckedChange={field.onChange} />
+              <Switch
+                id="high_impact_news"
+                checked={field.value}
+                onCheckedChange={field.onChange}
+              />
             )}
           />
         </Field>
@@ -214,9 +248,15 @@ export function DailyPrepForm({ date, prep }: { date: string; prep?: DailyPrep |
                 name="bias_outcome"
                 render={({ field }) => (
                   <Select value={field.value ?? undefined} onValueChange={field.onChange}>
-                    <SelectTrigger className="w-full"><SelectValue placeholder="—" /></SelectTrigger>
+                    <SelectTrigger className="w-full">
+                      <SelectValue placeholder="—" />
+                    </SelectTrigger>
                     <SelectContent>
-                      {BIAS_OUTCOMES.map((v) => <SelectItem key={v} value={v}>{v}</SelectItem>)}
+                      {BIAS_OUTCOMES.map((v) => (
+                        <SelectItem key={v} value={v}>
+                          {v}
+                        </SelectItem>
+                      ))}
                     </SelectContent>
                   </Select>
                 )}

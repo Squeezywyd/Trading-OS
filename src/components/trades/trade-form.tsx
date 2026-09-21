@@ -25,7 +25,11 @@ import {
   BIAS_ALIGNMENTS,
 } from "@/lib/constants/enums";
 import { calcRiskUsd, calcRMultiple, calcResultFromPnl } from "@/lib/trading/risk";
-import { createTradeAction, deleteTradeAction, updateTradeAction } from "@/app/(app)/journal/actions";
+import {
+  createTradeAction,
+  deleteTradeAction,
+  updateTradeAction,
+} from "@/app/(app)/journal/actions";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -117,7 +121,14 @@ export function TradeForm({
   });
 
   const { watch, setValue, control, register, handleSubmit, formState } = form;
-  const watched = watch(["instrument", "contracts", "entry_price", "stop_price", "pnl_usd", "risk_usd"]);
+  const watched = watch([
+    "instrument",
+    "contracts",
+    "entry_price",
+    "stop_price",
+    "pnl_usd",
+    "risk_usd",
+  ]);
   const instrument = watched[0] as TradeFormValues["instrument"];
   const contracts = toNum(watched[1]);
   const entryPrice = toNum(watched[2]);
@@ -208,10 +219,14 @@ export function TradeForm({
                   name="instrument"
                   render={({ field }) => (
                     <Select value={field.value} onValueChange={field.onChange}>
-                      <SelectTrigger className="w-full"><SelectValue /></SelectTrigger>
+                      <SelectTrigger className="w-full">
+                        <SelectValue />
+                      </SelectTrigger>
                       <SelectContent>
                         {INSTRUMENTS.map((v) => (
-                          <SelectItem key={v} value={v}>{v}</SelectItem>
+                          <SelectItem key={v} value={v}>
+                            {v}
+                          </SelectItem>
                         ))}
                       </SelectContent>
                     </Select>
@@ -228,10 +243,14 @@ export function TradeForm({
                   name="direction"
                   render={({ field }) => (
                     <Select value={field.value} onValueChange={field.onChange}>
-                      <SelectTrigger className="w-full"><SelectValue /></SelectTrigger>
+                      <SelectTrigger className="w-full">
+                        <SelectValue />
+                      </SelectTrigger>
                       <SelectContent>
                         {DIRECTIONS.map((v) => (
-                          <SelectItem key={v} value={v}>{v}</SelectItem>
+                          <SelectItem key={v} value={v}>
+                            {v}
+                          </SelectItem>
                         ))}
                       </SelectContent>
                     </Select>
@@ -248,10 +267,14 @@ export function TradeForm({
                   name="session"
                   render={({ field }) => (
                     <Select value={field.value} onValueChange={field.onChange}>
-                      <SelectTrigger className="w-full"><SelectValue /></SelectTrigger>
+                      <SelectTrigger className="w-full">
+                        <SelectValue />
+                      </SelectTrigger>
                       <SelectContent>
                         {SESSIONS.map((v) => (
-                          <SelectItem key={v} value={v}>{v}</SelectItem>
+                          <SelectItem key={v} value={v}>
+                            {v}
+                          </SelectItem>
                         ))}
                       </SelectContent>
                     </Select>
@@ -268,10 +291,14 @@ export function TradeForm({
                   name="amd_phase"
                   render={({ field }) => (
                     <Select value={field.value ?? undefined} onValueChange={field.onChange}>
-                      <SelectTrigger className="w-full"><SelectValue placeholder="—" /></SelectTrigger>
+                      <SelectTrigger className="w-full">
+                        <SelectValue placeholder="—" />
+                      </SelectTrigger>
                       <SelectContent>
                         {AMD_PHASES.map((v) => (
-                          <SelectItem key={v} value={v}>{v}</SelectItem>
+                          <SelectItem key={v} value={v}>
+                            {v}
+                          </SelectItem>
                         ))}
                       </SelectContent>
                     </Select>
@@ -297,7 +324,9 @@ export function TradeForm({
                     className="flex flex-wrap"
                   >
                     {MODELS.map((m) => (
-                      <ToggleGroupItem key={m} value={m}>{m}</ToggleGroupItem>
+                      <ToggleGroupItem key={m} value={m}>
+                        {m}
+                      </ToggleGroupItem>
                     ))}
                   </ToggleGroup>
                 )}
@@ -308,7 +337,10 @@ export function TradeForm({
           {selectedModelRules.length > 0 ? (
             <div className="space-y-1.5">
               {selectedModelRules.map((r) => (
-                <div key={r.id} className="bg-primary/5 text-muted-foreground rounded-md px-3 py-1.5 text-xs">
+                <div
+                  key={r.id}
+                  className="bg-primary/5 text-muted-foreground rounded-md px-3 py-1.5 text-xs"
+                >
                   <span className="text-foreground font-medium">{r.model}:</span>{" "}
                   {r.default_contracts != null ? `${r.default_contracts} contracts, ` : ""}
                   {r.stop_min_points != null && r.stop_max_points != null
@@ -328,25 +360,49 @@ export function TradeForm({
           <Field>
             <FieldLabel htmlFor="entry_price">Entry</FieldLabel>
             <FieldContent>
-              <Input id="entry_price" type="number" step="any" className="font-mono tabular-nums" {...register("entry_price")} />
+              <Input
+                id="entry_price"
+                type="number"
+                step="any"
+                className="font-mono tabular-nums"
+                {...register("entry_price")}
+              />
             </FieldContent>
           </Field>
           <Field>
             <FieldLabel htmlFor="stop_price">Stop</FieldLabel>
             <FieldContent>
-              <Input id="stop_price" type="number" step="any" className="font-mono tabular-nums" {...register("stop_price")} />
+              <Input
+                id="stop_price"
+                type="number"
+                step="any"
+                className="font-mono tabular-nums"
+                {...register("stop_price")}
+              />
             </FieldContent>
           </Field>
           <Field>
             <FieldLabel htmlFor="target_price">Target</FieldLabel>
             <FieldContent>
-              <Input id="target_price" type="number" step="any" className="font-mono tabular-nums" {...register("target_price")} />
+              <Input
+                id="target_price"
+                type="number"
+                step="any"
+                className="font-mono tabular-nums"
+                {...register("target_price")}
+              />
             </FieldContent>
           </Field>
           <Field>
             <FieldLabel htmlFor="exit_price">Exit</FieldLabel>
             <FieldContent>
-              <Input id="exit_price" type="number" step="any" className="font-mono tabular-nums" {...register("exit_price")} />
+              <Input
+                id="exit_price"
+                type="number"
+                step="any"
+                className="font-mono tabular-nums"
+                {...register("exit_price")}
+              />
             </FieldContent>
           </Field>
         </div>
@@ -355,7 +411,13 @@ export function TradeForm({
           <Field>
             <FieldLabel htmlFor="contracts">Contracts</FieldLabel>
             <FieldContent>
-              <Input id="contracts" type="number" step="any" className="font-mono tabular-nums" {...register("contracts")} />
+              <Input
+                id="contracts"
+                type="number"
+                step="any"
+                className="font-mono tabular-nums"
+                {...register("contracts")}
+              />
             </FieldContent>
           </Field>
 
@@ -379,7 +441,11 @@ export function TradeForm({
                 {riskAuto ? (
                   <span className="text-muted-foreground">Auto from entry/stop/contracts</span>
                 ) : (
-                  <button type="button" className="text-primary underline" onClick={() => setRiskAuto(true)}>
+                  <button
+                    type="button"
+                    className="text-primary underline"
+                    onClick={() => setRiskAuto(true)}
+                  >
                     Resume auto-calc
                   </button>
                 )}
@@ -390,7 +456,13 @@ export function TradeForm({
           <Field>
             <FieldLabel htmlFor="pnl_usd">P&amp;L ($)</FieldLabel>
             <FieldContent>
-              <Input id="pnl_usd" type="number" step="any" className="font-mono tabular-nums" {...register("pnl_usd")} />
+              <Input
+                id="pnl_usd"
+                type="number"
+                step="any"
+                className="font-mono tabular-nums"
+                {...register("pnl_usd")}
+              />
             </FieldContent>
           </Field>
 
@@ -399,8 +471,12 @@ export function TradeForm({
             <FieldContent>
               <div
                 className={
-                  "flex h-8 items-center rounded-lg border border-input bg-muted/30 px-2.5 font-mono text-sm tabular-nums " +
-                  (rMultiple == null ? "text-muted-foreground" : rMultiple >= 0 ? "text-profit" : "text-loss")
+                  "border-input bg-muted/30 flex h-8 items-center rounded-lg border px-2.5 font-mono text-sm tabular-nums " +
+                  (rMultiple == null
+                    ? "text-muted-foreground"
+                    : rMultiple >= 0
+                      ? "text-profit"
+                      : "text-loss")
                 }
               >
                 {rMultiple == null ? "—" : `${rMultiple > 0 ? "+" : ""}${rMultiple.toFixed(2)}R`}
@@ -424,10 +500,14 @@ export function TradeForm({
                       field.onChange(v);
                     }}
                   >
-                    <SelectTrigger className="w-full"><SelectValue placeholder="Auto from P&L" /></SelectTrigger>
+                    <SelectTrigger className="w-full">
+                      <SelectValue placeholder="Auto from P&L" />
+                    </SelectTrigger>
                     <SelectContent>
                       {RESULTS.map((v) => (
-                        <SelectItem key={v} value={v}>{v}</SelectItem>
+                        <SelectItem key={v} value={v}>
+                          {v}
+                        </SelectItem>
                       ))}
                     </SelectContent>
                   </Select>
@@ -444,10 +524,14 @@ export function TradeForm({
                 name="setup_grade"
                 render={({ field }) => (
                   <Select value={field.value ?? undefined} onValueChange={field.onChange}>
-                    <SelectTrigger className="w-full"><SelectValue placeholder="—" /></SelectTrigger>
+                    <SelectTrigger className="w-full">
+                      <SelectValue placeholder="—" />
+                    </SelectTrigger>
                     <SelectContent>
                       {SETUP_GRADES.map((v) => (
-                        <SelectItem key={v} value={v}>{v}</SelectItem>
+                        <SelectItem key={v} value={v}>
+                          {v}
+                        </SelectItem>
                       ))}
                     </SelectContent>
                   </Select>
@@ -464,10 +548,14 @@ export function TradeForm({
                 name="bias_alignment"
                 render={({ field }) => (
                   <Select value={field.value ?? undefined} onValueChange={field.onChange}>
-                    <SelectTrigger className="w-full"><SelectValue placeholder="—" /></SelectTrigger>
+                    <SelectTrigger className="w-full">
+                      <SelectValue placeholder="—" />
+                    </SelectTrigger>
                     <SelectContent>
                       {BIAS_ALIGNMENTS.map((v) => (
-                        <SelectItem key={v} value={v}>{v}</SelectItem>
+                        <SelectItem key={v} value={v}>
+                          {v}
+                        </SelectItem>
                       ))}
                     </SelectContent>
                   </Select>
@@ -500,10 +588,14 @@ export function TradeForm({
                 name="emotion"
                 render={({ field }) => (
                   <Select value={field.value ?? undefined} onValueChange={field.onChange}>
-                    <SelectTrigger className="w-full"><SelectValue placeholder="—" /></SelectTrigger>
+                    <SelectTrigger className="w-full">
+                      <SelectValue placeholder="—" />
+                    </SelectTrigger>
                     <SelectContent>
                       {EMOTIONS.map((v) => (
-                        <SelectItem key={v} value={v}>{v}</SelectItem>
+                        <SelectItem key={v} value={v}>
+                          {v}
+                        </SelectItem>
                       ))}
                     </SelectContent>
                   </Select>
@@ -536,7 +628,9 @@ export function TradeForm({
                   className="flex flex-wrap"
                 >
                   {MISTAKES.map((m) => (
-                    <ToggleGroupItem key={m} value={m}>{m}</ToggleGroupItem>
+                    <ToggleGroupItem key={m} value={m}>
+                      {m}
+                    </ToggleGroupItem>
                   ))}
                 </ToggleGroup>
               )}
@@ -554,7 +648,12 @@ export function TradeForm({
           <Field>
             <FieldLabel htmlFor="lesson">Lesson</FieldLabel>
             <FieldContent>
-              <Textarea id="lesson" rows={3} placeholder="One line — what will you do differently?" {...register("lesson")} />
+              <Textarea
+                id="lesson"
+                rows={3}
+                placeholder="One line — what will you do differently?"
+                {...register("lesson")}
+              />
             </FieldContent>
           </Field>
         </div>
@@ -563,12 +662,14 @@ export function TradeForm({
       <div className="flex items-center justify-between">
         {isEdit ? (
           <AlertDialog>
-            <AlertDialogTrigger render={
-              <Button type="button" variant="destructive" size="sm">
-                <Trash2 />
-                Delete
-              </Button>
-            } />
+            <AlertDialogTrigger
+              render={
+                <Button type="button" variant="destructive" size="sm">
+                  <Trash2 />
+                  Delete
+                </Button>
+              }
+            />
             <AlertDialogContent>
               <AlertDialogHeader>
                 <AlertDialogTitle>Delete this trade?</AlertDialogTitle>
