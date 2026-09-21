@@ -45,6 +45,9 @@ import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { Field, FieldContent, FieldError, FieldGroup, FieldLabel } from "@/components/ui/field";
 import type { Trade } from "@/lib/data/trades";
 import type { Tables } from "@/lib/supabase/database.types";
+import type { ChecklistItem } from "@/lib/trading/checklist";
+import type { SetupGrade } from "@/lib/constants/enums";
+import { SetupChecklistGate } from "@/components/trades/setup-checklist-gate";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -73,9 +76,11 @@ function toNum(v: unknown): number | null {
 export function TradeForm({
   trade,
   modelRules = [],
+  checklistItems = [],
 }: {
   trade?: Trade;
   modelRules?: Tables<"model_rules">[];
+  checklistItems?: ChecklistItem[];
 }) {
   const router = useRouter();
   const isEdit = !!trade;
@@ -525,7 +530,7 @@ export function TradeForm({
                 render={({ field }) => (
                   <Select value={field.value ?? undefined} onValueChange={field.onChange}>
                     <SelectTrigger className="w-full">
-                      <SelectValue placeholder="—" />
+                      <SelectValue placeholder="From checklist below" />
                     </SelectTrigger>
                     <SelectContent>
                       {SETUP_GRADES.map((v) => (
@@ -576,6 +581,11 @@ export function TradeForm({
           />
         </Field>
       </div>
+
+      <SetupChecklistGate
+        items={checklistItems}
+        onGradeChange={(grade: SetupGrade | null) => setValue("setup_grade", grade, { shouldDirty: false })}
+      />
 
       <div className="glass-panel space-y-5 p-5">
         <p className="label-muted">Psychology</p>

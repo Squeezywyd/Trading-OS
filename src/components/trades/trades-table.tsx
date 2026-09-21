@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import Link from "next/link";
-import { Plus, Search, Download, Upload } from "lucide-react";
+import { Plus, Search, Download, Upload, ArrowUp, ArrowDown } from "lucide-react";
 import type { TradeWithR } from "@/lib/data/trades";
 import {
   INSTRUMENTS,
@@ -33,21 +33,84 @@ function resultVariant(result: Result | null) {
 
 const ALL = "__all__";
 
+type SortKey = "date" | "instrument" | "session" | "result" | "r_multiple" | "pnl_usd" | "setup_grade";
+
+const SORT_COLUMNS: Array<{ key: SortKey; label: string; align?: "right" }> = [
+  { key: "date", label: "Date" },
+  { key: "instrument", label: "Instrument" },
+  { key: "session", label: "Session" },
+  { key: "result", label: "Result" },
+  { key: "r_multiple", label: "R", align: "right" },
+  { key: "pnl_usd", label: "P&L", align: "right" },
+  { key: "setup_grade", label: "Grade" },
+];
+
+function SortHeader({
+  label,
+  active,
+  direction,
+  align,
+  onClick,
+}: {
+  label: string;
+  active: boolean;
+  direction: "asc" | "desc";
+  align?: "right";
+  onClick: () => void;
+}) {
+  const Icon = direction === "asc" ? ArrowUp : ArrowDown;
+  return (
+    <th className={`px-3 py-2 font-medium ${align === "right" ? "text-right" : "text-left"}`}>
+      <button
+        type="button"
+        onClick={onClick}
+        className={`inline-flex items-center gap-1 transition-colors hover:text-foreground ${align === "right" ? "flex-row-reverse" : ""}`}
+      >
+        {label}
+        {active ? <Icon className="size-3" /> : null}
+      </button>
+    </th>
+  );
+}
+
 export function TradesTable({ trades }: { trades: TradeWithR[] }) {
   const [search, setSearch] = React.useState("");
   const [instrument, setInstrument] = React.useState<Instrument | typeof ALL>(ALL);
   const [session, setSession] = React.useState<Session | typeof ALL>(ALL);
   const [result, setResult] = React.useState<Result | typeof ALL>(ALL);
+  const [sortKey, setSortKey] = React.useState<SortKey>("date");
+  const [sortDir, setSortDir] = React.useState<"asc" | "desc">("desc");
+
+  function toggleSort(key: SortKey) {
+    if (key === sortKey) {
+      setSortDir((d) => (d === "asc" ? "desc" : "asc"));
+    } else {
+      setSortKey(key);
+      setSortDir("desc");
+    }
+  }
 
   const filtered = React.useMemo(() => {
-    return trades.filter((t) => {
+    const rows = trades.filter((t) => {
       if (search && !t.title?.toLowerCase().includes(search.toLowerCase())) return false;
       if (instrument !== ALL && t.instrument !== instrument) return false;
       if (session !== ALL && t.session !== session) return false;
       if (result !== ALL && t.result !== result) return false;
       return true;
     });
-  }, [trades, search, instrument, session, result]);
+
+    const dir = sortDir === "asc" ? 1 : -1;
+    return [...rows].sort((a, b) => {
+      const av = a[sortKey];
+      const bv = b[sortKey];
+      if (av == null && bv == null) return 0;
+      if (av == null) return 1;
+      if (bv == null) return -1;
+      if (av < bv) return -1 * dir;
+      if (av > bv) return 1 * dir;
+      return 0;
+    });
+  }, [trades, search, instrument, session, result, sortKey, sortDir]);
 
   return (
     <div className="space-y-4">
@@ -146,14 +209,23 @@ export function TradesTable({ trades }: { trades: TradeWithR[] }) {
           <table className="w-full text-sm">
             <thead>
               <tr className="border-border/60 text-muted-foreground border-b text-left text-xs">
-                <th className="px-3 py-2 font-medium">Date</th>
+                <SortHeader
+                  label="Date"
+                  active={sortKey === "date"}
+                  direction={sortDir}
+                  onClick={() => toggleSort("date")}
+                />
                 <th className="px-3 py-2 font-medium">Trade</th>
-                <th className="px-3 py-2 font-medium">Instrument</th>
-                <th className="px-3 py-2 font-medium">Session</th>
-                <th className="px-3 py-2 font-medium">Result</th>
-                <th className="px-3 py-2 text-right font-medium">R</th>
-                <th className="px-3 py-2 text-right font-medium">P&amp;L</th>
-                <th className="px-3 py-2 font-medium">Grade</th>
+                {SORT_COLUMNS.filter((c) => c.key !== "date").map((c) => (
+                  <SortHeader
+                    key={c.key}
+                    label={c.label}
+                    align={c.align}
+                    active={sortKey === c.key}
+                    direction={sortDir}
+                    onClick={() => toggleSort(c.key)}
+                  />
+                ))}
               </tr>
             </thead>
             <tbody>

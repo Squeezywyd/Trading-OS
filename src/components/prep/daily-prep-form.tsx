@@ -73,6 +73,9 @@ export function DailyPrepForm({ date, prep }: { date: string; prep?: DailyPrep |
             onApply={(result) => {
               setValue("daily_bias", result.dailyBias);
               setValue("confidence", result.confidence);
+              if (result.invalidationLevel != null) {
+                setValue("invalidation_level", result.invalidationLevel);
+              }
             }}
           />
         </div>

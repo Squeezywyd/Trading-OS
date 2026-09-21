@@ -2,6 +2,18 @@ import "server-only";
 import { createClient } from "@/lib/supabase/server";
 import type { TablesInsert, TablesUpdate } from "@/lib/supabase/database.types";
 import type { TheoryCategory, TheoryPriority, TheoryUseFor } from "@/lib/constants/enums";
+import { extractChecklistItems } from "@/lib/trading/checklist";
+
+const SETUP_CHECKLIST_SLUG = "a-setup-checklist";
+
+/** Powers the trade form's Setup Grade gate — reads live from theory_docs, so
+ * editing the checklist there (in-app editor) changes what the trade form
+ * grades against, with nothing hardcoded here. */
+export async function getSetupChecklistItems() {
+  const doc = await getTheoryDocBySlug(SETUP_CHECKLIST_SLUG);
+  if (!doc) return [];
+  return extractChecklistItems(doc.body_md);
+}
 
 export interface TheoryFilters {
   category?: TheoryCategory;

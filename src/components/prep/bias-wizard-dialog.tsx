@@ -2,10 +2,16 @@
 
 import * as React from "react";
 import { Sparkles } from "lucide-react";
-import { computeDailyBias, type BiasWizardInputs, type BiasWizardResult } from "@/lib/trading/bias";
+import {
+  computeDailyBias,
+  pickInvalidationReference,
+  type BiasWizardInputs,
+  type BiasWizardResult,
+} from "@/lib/trading/bias";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Switch } from "@/components/ui/switch";
+import { Input } from "@/components/ui/input";
 import {
   Dialog,
   DialogContent,
@@ -60,11 +66,19 @@ function StepToggle<T extends string>({
   );
 }
 
-export function BiasWizardDialog({ onApply }: { onApply: (result: BiasWizardResult) => void }) {
+export interface BiasWizardApplied {
+  dailyBias: BiasWizardResult["dailyBias"];
+  confidence: BiasWizardResult["confidence"];
+  invalidationLevel: number | null;
+}
+
+export function BiasWizardDialog({ onApply }: { onApply: (result: BiasWizardApplied) => void }) {
   const [open, setOpen] = React.useState(false);
   const [inputs, setInputs] = React.useState<BiasWizardInputs>(DEFAULTS);
+  const [invalidationPrice, setInvalidationPrice] = React.useState("");
 
   const result = computeDailyBias(inputs);
+  const invalidationRef = pickInvalidationReference(result.dailyBias);
 
   function patch<K extends keyof BiasWizardInputs>(key: K, value: BiasWizardInputs[K]) {
     setInputs((prev) => ({ ...prev, [key]: value }));
@@ -83,9 +97,7 @@ export function BiasWizardDialog({ onApply }: { onApply: (result: BiasWizardResu
       <DialogContent className="sm:max-w-md">
         <DialogHeader>
           <DialogTitle>Daily Bias: Top-Down Process</DialogTitle>
-          <DialogDescription>
-            Walk the top-down checklist. The call below updates live.
-          </DialogDescription>
+          <DialogDescription>Walk the top-down checklist. The call below updates live.</DialogDescription>
         </DialogHeader>
 
         <div className="space-y-4">
@@ -135,13 +147,36 @@ export function BiasWizardDialog({ onApply }: { onApply: (result: BiasWizardResu
             </div>
             <Badge variant="outline">{result.confidence} confidence</Badge>
           </div>
+
+          {invalidationRef ? (
+            <Field>
+              <FieldLabel htmlFor="invalidation-price">
+                {invalidationRef} price (invalidation level)
+              </FieldLabel>
+              <FieldContent>
+                <Input
+                  id="invalidation-price"
+                  type="number"
+                  step="any"
+                  placeholder={`Today's ${invalidationRef}`}
+                  className="font-mono tabular-nums"
+                  value={invalidationPrice}
+                  onChange={(e) => setInvalidationPrice(e.target.value)}
+                />
+              </FieldContent>
+            </Field>
+          ) : null}
         </div>
 
         <DialogFooter>
           <Button
             type="button"
             onClick={() => {
-              onApply(result);
+              onApply({
+                dailyBias: result.dailyBias,
+                confidence: result.confidence,
+                invalidationLevel: invalidationPrice.trim() === "" ? null : Number(invalidationPrice),
+              });
               setOpen(false);
             }}
           >
