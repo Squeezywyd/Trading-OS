@@ -1,14 +1,14 @@
-import { format } from "date-fns";
-import { toZonedTime } from "date-fns-tz";
+import { notFound } from "next/navigation";
 import { PageHeader } from "@/components/page-header";
 import { DailyPrepForm } from "@/components/prep/daily-prep-form";
 import { LinkedTrades } from "@/components/prep/linked-trades";
 import { getDailyPrepByDate } from "@/lib/data/daily-preps";
 import { listTrades } from "@/lib/data/trades";
-import { NY_TZ } from "@/lib/trading/sessions";
 
-export default async function DailyPrepPage() {
-  const date = format(toZonedTime(new Date(), NY_TZ), "yyyy-MM-dd");
+export default async function DailyPrepDatePage({ params }: { params: Promise<{ date: string }> }) {
+  const { date } = await params;
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(date)) notFound();
+
   const [prep, trades] = await Promise.all([
     getDailyPrepByDate(date),
     listTrades({ start: date, end: date }),
@@ -16,7 +16,7 @@ export default async function DailyPrepPage() {
 
   return (
     <>
-      <PageHeader title="Daily Prep" description={`Today — ${date} (America/New_York)`} />
+      <PageHeader title="Daily Prep" description={date} />
       <div className="space-y-6">
         <DailyPrepForm date={date} prep={prep} />
         <LinkedTrades trades={trades} />
