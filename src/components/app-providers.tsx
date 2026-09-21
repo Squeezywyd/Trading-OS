@@ -22,7 +22,7 @@ export function AppProviders({ children }: { children: React.ReactNode }) {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <TooltipProvider delayDuration={200}>
+      <TooltipProvider delay={200}>
         {children}
         <Toaster richColors position="bottom-right" />
         {process.env.NODE_ENV === "development" ? (

@@ -115,6 +115,9 @@ export const THEORY_USE_FOR = [
 ] as const;
 export type TheoryUseFor = (typeof THEORY_USE_FOR)[number];
 
+export const DRAWDOWN_TYPES = ["static", "trailing", "eod_trailing"] as const;
+export type DrawdownType = (typeof DRAWDOWN_TYPES)[number];
+
 /** USD value per 1.00 index point, per contract. null = no fixed multiplier (manual risk entry). */
 export const CONTRACT_POINT_VALUES: Record<Instrument, number | null> = {
   MNQ: 2,
