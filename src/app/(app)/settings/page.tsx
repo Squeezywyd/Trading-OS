@@ -1,19 +1,18 @@
-import { Settings } from "lucide-react";
 import { PageHeader } from "@/components/page-header";
-import { EmptyState } from "@/components/empty-state";
+import { AccountSettingsForm } from "@/components/settings/account-settings-form";
+import { ModelRulesManager } from "@/components/settings/model-rules-manager";
+import { getAccountSettings, listModelRules } from "@/lib/data/account-settings";
 
-export default function SettingsPage() {
+export default async function SettingsPage() {
+  const [settings, rules] = await Promise.all([getAccountSettings(), listModelRules()]);
+
   return (
     <>
-      <PageHeader
-        title="Settings"
-        description="Prop account rules and per-model defaults."
-      />
-      <EmptyState
-        icon={Settings}
-        title="No account settings yet"
-        description="Enter your LucidFlex 50K profit target, daily loss limit, max drawdown, and consistency rule."
-      />
+      <PageHeader title="Settings" description="Prop account rules and per-model defaults." />
+      <div className="space-y-6">
+        <AccountSettingsForm settings={settings} />
+        <ModelRulesManager rules={rules} />
+      </div>
     </>
   );
 }

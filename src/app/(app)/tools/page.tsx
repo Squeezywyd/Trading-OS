@@ -1,19 +1,19 @@
-import { Wrench } from "lucide-react";
 import { PageHeader } from "@/components/page-header";
-import { EmptyState } from "@/components/empty-state";
+import { PositionSizeCalculator } from "@/components/tools/position-size-calculator";
+import { SessionClock } from "@/components/tools/session-clock";
+import { NewsCountdown } from "@/components/tools/news-countdown";
 
 export default function ToolsPage() {
   return (
     <>
-      <PageHeader
-        title="Tools"
-        description="Position-size calculator, session clock, and news-day countdown."
-      />
-      <EmptyState
-        icon={Wrench}
-        title="Tools coming online"
-        description="Position sizing, the NY/Zurich session clock with killzones, and news countdown will live here."
-      />
+      <PageHeader title="Tools" description="Position sizing, session clock, and news countdown." />
+      <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
+        <div className="space-y-4">
+          <PositionSizeCalculator />
+          <NewsCountdown />
+        </div>
+        <SessionClock />
+      </div>
     </>
   );
 }

@@ -40,6 +40,7 @@ import {
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group";
 import { Field, FieldContent, FieldError, FieldGroup, FieldLabel } from "@/components/ui/field";
 import type { Trade } from "@/lib/data/trades";
+import type { Tables } from "@/lib/supabase/database.types";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -65,7 +66,13 @@ function toNum(v: unknown): number | null {
   return Number.isFinite(n) ? n : null;
 }
 
-export function TradeForm({ trade }: { trade?: Trade }) {
+export function TradeForm({
+  trade,
+  modelRules = [],
+}: {
+  trade?: Trade;
+  modelRules?: Tables<"model_rules">[];
+}) {
   const router = useRouter();
   const isEdit = !!trade;
 
@@ -134,6 +141,9 @@ export function TradeForm({ trade }: { trade?: Trade }) {
   }, [resultAuto, pnlUsd, setValue]);
 
   const rMultiple = calcRMultiple(pnlUsd, riskUsd);
+
+  const selectedModels = watch("models") ?? [];
+  const selectedModelRules = modelRules.filter((r) => selectedModels.includes(r.model));
 
   async function onSubmit(values: TradeFormValues) {
     const crossFieldError = validateTradeCrossFields(values);
@@ -294,6 +304,21 @@ export function TradeForm({ trade }: { trade?: Trade }) {
               />
             </FieldContent>
           </Field>
+
+          {selectedModelRules.length > 0 ? (
+            <div className="space-y-1.5">
+              {selectedModelRules.map((r) => (
+                <div key={r.id} className="bg-primary/5 text-muted-foreground rounded-md px-3 py-1.5 text-xs">
+                  <span className="text-foreground font-medium">{r.model}:</span>{" "}
+                  {r.default_contracts != null ? `${r.default_contracts} contracts, ` : ""}
+                  {r.stop_min_points != null && r.stop_max_points != null
+                    ? `${r.stop_min_points}–${r.stop_max_points}pt stop`
+                    : ""}
+                  {r.notes ? ` — ${r.notes}` : ""}
+                </div>
+              ))}
+            </div>
+          ) : null}
         </FieldGroup>
       </div>
 
