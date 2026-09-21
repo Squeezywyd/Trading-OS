@@ -34,6 +34,17 @@ export async function getEquityCurve(range: DateRange = {}) {
   return data;
 }
 
+export interface StatsRow {
+  dimension: string;
+  n: number;
+  wins: number;
+  losses: number;
+  win_rate: number | null;
+  avg_r: number | null;
+  expectancy: number | null;
+  total_pnl: number | null;
+}
+
 export type StatsDimension =
   | "session"
   | "instrument"
