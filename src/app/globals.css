@@ -261,6 +261,9 @@
   .prose-theory pre code {
     @apply bg-transparent p-0;
   }
+  .prose-theory img {
+    @apply border-border/60 my-4 h-auto max-w-full rounded-lg border;
+  }
   .prose-theory table {
     @apply my-4 w-full border-collapse text-sm;
   }
