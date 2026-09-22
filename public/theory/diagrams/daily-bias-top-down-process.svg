@@ -1,0 +1,28 @@
+<svg viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg" font-family="ui-monospace, monospace">
+  <title>Top-down timeframe funnel: Weekly structure narrows to a lower-timeframe entry</title>
+  <rect x="1" y="1" width="798" height="448" rx="12" fill="#0b1220" stroke="#1e293b" stroke-width="2"/>
+  <text x="400" y="34" text-anchor="middle" fill="#e5e7eb" font-size="16" font-weight="bold">Top-Down Analysis: Weekly to LTF Entry</text>
+
+  <!-- Funnel bands: 4 trapezoids narrowing downward -->
+  <!-- Weekly -->
+  <polygon points="90,70 710,70 650,140 150,140" fill="#22d3ee" opacity="0.16" stroke="#22d3ee" stroke-width="1.5"/>
+  <text x="400" y="98" text-anchor="middle" fill="#e5e7eb" font-size="14" font-weight="bold">WEEKLY</text>
+  <text x="400" y="120" text-anchor="middle" fill="#e5e7eb" font-size="12">Structure (HH/HL or LH/LL) + far-side DOL</text>
+
+  <!-- Daily -->
+  <polygon points="150,150 650,150 590,220 210,220" fill="#f59e0b" opacity="0.16" stroke="#f59e0b" stroke-width="1.5"/>
+  <text x="400" y="178" text-anchor="middle" fill="#e5e7eb" font-size="14" font-weight="bold">DAILY</text>
+  <text x="400" y="200" text-anchor="middle" fill="#e5e7eb" font-size="12">Nearest draw on liquidity + unfilled PD array</text>
+
+  <!-- 4H/1H -->
+  <polygon points="210,230 590,230 530,300 270,300" fill="#a78bfa" opacity="0.16" stroke="#a78bfa" stroke-width="1.5"/>
+  <text x="400" y="258" text-anchor="middle" fill="#e5e7eb" font-size="14" font-weight="bold">4H / 1H</text>
+  <text x="400" y="280" text-anchor="middle" fill="#e5e7eb" font-size="12">Current range + premium/discount location</text>
+
+  <!-- LTF -->
+  <polygon points="270,310 530,310 500,380 300,380" fill="#22c55e" opacity="0.18" stroke="#22c55e" stroke-width="1.5"/>
+  <text x="400" y="338" text-anchor="middle" fill="#e5e7eb" font-size="14" font-weight="bold">LTF (1m-5m)</text>
+  <text x="400" y="360" text-anchor="middle" fill="#e5e7eb" font-size="12">Sweep + MSS + entry timing only</text>
+
+  <text x="400" y="415" text-anchor="middle" fill="#e5e7eb" font-size="12" opacity="0.75">Direction and destination are decided above the line. LTF only times the entry.</text>
+</svg>

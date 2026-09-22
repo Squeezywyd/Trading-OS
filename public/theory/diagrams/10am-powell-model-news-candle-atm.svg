@@ -1,0 +1,91 @@
+<svg viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg" font-family="ui-monospace, monospace">
+  <title>10am Powell / news-candle ATM model: pre-news range, manipulation spike, reversal, retrace entry, stop, target</title>
+  <rect x="1" y="1" width="798" height="448" rx="12" fill="#0b1220" stroke="#1e293b" stroke-width="2"/>
+  <text x="24" y="34" fill="#e5e7eb" font-size="16" font-weight="bold">10am Powell Model — News Candle + ATM</text>
+
+  <!-- grid -->
+  <g stroke="#1e293b" stroke-opacity="0.4">
+    <line x1="24" y1="90" x2="776" y2="90"/>
+    <line x1="24" y1="150" x2="776" y2="150"/>
+    <line x1="24" y1="210" x2="776" y2="210"/>
+    <line x1="24" y1="270" x2="776" y2="270"/>
+    <line x1="24" y1="330" x2="776" y2="330"/>
+    <line x1="24" y1="390" x2="776" y2="390"/>
+  </g>
+
+  <!-- pre-news range lines -->
+  <line x1="24" y1="150" x2="360" y2="150" stroke="#e5e7eb" stroke-dasharray="4 4" stroke-width="1.5"/>
+  <line x1="24" y1="300" x2="360" y2="300" stroke="#e5e7eb" stroke-dasharray="4 4" stroke-width="1.5"/>
+  <text x="30" y="144" fill="#e5e7eb" font-size="12">range high (9:30-10:00)</text>
+  <text x="30" y="316" fill="#e5e7eb" font-size="12">range low</text>
+
+  <!-- pre-news candles (small, calm) -->
+  <g>
+    <line x1="60" y1="200" x2="60" y2="240" stroke="#22c55e" stroke-width="2"/>
+    <rect x="54" y="210" width="12" height="20" fill="#22c55e"/>
+    <line x1="100" y1="190" x2="100" y2="230" stroke="#ef4444" stroke-width="2"/>
+    <rect x="94" y="195" width="12" height="20" fill="#ef4444"/>
+    <line x1="140" y1="205" x2="140" y2="245" stroke="#22c55e" stroke-width="2"/>
+    <rect x="134" y="215" width="12" height="20" fill="#22c55e"/>
+    <line x1="180" y1="195" x2="180" y2="235" stroke="#ef4444" stroke-width="2"/>
+    <rect x="174" y="200" width="12" height="20" fill="#ef4444"/>
+    <line x1="220" y1="200" x2="220" y2="240" stroke="#22c55e" stroke-width="2"/>
+    <rect x="214" y="210" width="12" height="20" fill="#22c55e"/>
+    <line x1="260" y1="190" x2="260" y2="230" stroke="#ef4444" stroke-width="2"/>
+    <rect x="254" y="195" width="12" height="20" fill="#ef4444"/>
+    <line x1="300" y1="205" x2="300" y2="245" stroke="#22c55e" stroke-width="2"/>
+    <rect x="294" y="215" width="12" height="20" fill="#22c55e"/>
+  </g>
+
+  <!-- 10:00 news candle: spike above range high then reverses -->
+  <line x1="360" y1="70" x2="360" y2="260" stroke="#ef4444" stroke-width="2.5"/>
+  <rect x="350" y="150" width="20" height="80" fill="#ef4444"/>
+  <text x="330" y="60" fill="#f59e0b" font-size="12" font-weight="bold">10:00 news candle</text>
+  <text x="330" y="76" fill="#f59e0b" font-size="11">(manipulation: sweeps range high)</text>
+
+  <!-- reaction candles reversing down -->
+  <g>
+    <line x1="400" y1="220" x2="400" y2="270" stroke="#ef4444" stroke-width="2"/>
+    <rect x="394" y="225" width="12" height="35" fill="#ef4444"/>
+    <line x1="440" y1="240" x2="440" y2="300" stroke="#ef4444" stroke-width="2"/>
+    <rect x="434" y="245" width="12" height="45" fill="#ef4444"/>
+  </g>
+
+  <!-- FVG / RB retrace zone -->
+  <rect x="410" y="205" width="70" height="45" fill="#a78bfa" opacity="0.22"/>
+  <text x="412" y="200" fill="#a78bfa" font-size="11">FVG / RB retrace</text>
+
+  <!-- entry arrow -->
+  <path d="M 470 227 L 520 227" stroke="#22d3ee" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="472" y="220" fill="#22d3ee" font-size="12" font-weight="bold">entry short</text>
+
+  <!-- displacement down to target -->
+  <g>
+    <line x1="540" y1="260" x2="540" y2="320" stroke="#ef4444" stroke-width="2"/>
+    <rect x="534" y="265" width="12" height="50" fill="#ef4444"/>
+    <line x1="580" y1="290" x2="580" y2="345" stroke="#ef4444" stroke-width="2"/>
+    <rect x="574" y="295" width="12" height="45" fill="#ef4444"/>
+    <line x1="620" y1="300" x2="620" y2="305" stroke="#22c55e" stroke-width="2"/>
+    <rect x="614" y="298" width="12" height="10" fill="#22c55e"/>
+  </g>
+
+  <!-- stop line -->
+  <line x1="360" y1="66" x2="776" y2="66" stroke="#f472b6" stroke-dasharray="3 3" stroke-width="1.5"/>
+  <text x="620" y="60" fill="#f472b6" font-size="12">stop: beyond news-candle spike</text>
+
+  <!-- target zone at range low -->
+  <rect x="620" y="290" width="140" height="20" fill="#f472b6" opacity="0.2"/>
+  <text x="622" y="335" fill="#f472b6" font-size="12">target: opposite range side / next liquidity</text>
+
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#22d3ee"/>
+    </marker>
+  </defs>
+
+  <!-- legend -->
+  <g font-size="11" fill="#e5e7eb">
+    <rect x="600" y="400" width="12" height="12" fill="#ef4444"/><text x="618" y="410">bearish candle</text>
+    <rect x="600" y="418" width="12" height="12" fill="#a78bfa" opacity="0.4"/><text x="618" y="428">FVG / RB zone</text>
+  </g>
+</svg>

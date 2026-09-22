@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 300" font-family="ui-monospace, monospace">
+  <title>Sessions and killzones timeline in New York time, from Asia through NY PM, with Silver Bullet windows marked</title>
+  <rect x="10" y="10" width="880" height="280" rx="12" fill="#0b1220" stroke="#1e293b" />
+  <text x="450" y="34" text-anchor="middle" fill="#e5e7eb" font-size="16" font-weight="bold">Sessions &amp; Killzones — New York Time</text>
+
+  <!-- hourly grid -->
+  <g stroke="#1e293b" stroke-opacity="0.4">
+    <line x1="40" y1="60" x2="40" y2="230" />
+    <line x1="122" y1="60" x2="122" y2="230" />
+    <line x1="204" y1="60" x2="204" y2="230" />
+    <line x1="286" y1="60" x2="286" y2="230" />
+    <line x1="368" y1="60" x2="368" y2="230" />
+    <line x1="450" y1="60" x2="450" y2="230" />
+    <line x1="532" y1="60" x2="532" y2="230" />
+    <line x1="614" y1="60" x2="614" y2="230" />
+    <line x1="696" y1="60" x2="696" y2="230" />
+    <line x1="778" y1="60" x2="778" y2="230" />
+    <line x1="860" y1="60" x2="860" y2="230" />
+  </g>
+
+  <!-- session blocks -->
+  <g>
+    <rect x="40" y="120" width="164" height="50" fill="#a78bfa" fill-opacity="0.22" stroke="#a78bfa" stroke-opacity="0.5" />
+    <text x="122" y="149" text-anchor="middle" fill="#e5e7eb" font-size="12">Asia</text>
+
+    <rect x="286" y="120" width="123" height="50" fill="#22d3ee" fill-opacity="0.22" stroke="#22d3ee" stroke-opacity="0.5" />
+    <text x="347" y="149" text-anchor="middle" fill="#e5e7eb" font-size="12">London</text>
+
+    <rect x="491" y="120" width="123" height="50" fill="#f59e0b" fill-opacity="0.22" stroke="#f59e0b" stroke-opacity="0.5" />
+    <text x="552" y="149" text-anchor="middle" fill="#e5e7eb" font-size="12">NY AM</text>
+
+    <rect x="696" y="120" width="41" height="50" fill="#ef4444" fill-opacity="0.18" stroke="#ef4444" stroke-opacity="0.5" />
+    <text x="716" y="149" text-anchor="middle" fill="#e5e7eb" font-size="10">Lunch</text>
+
+    <rect x="757" y="120" width="103" height="50" fill="#22c55e" fill-opacity="0.2" stroke="#22c55e" stroke-opacity="0.5" />
+    <text x="808" y="149" text-anchor="middle" fill="#e5e7eb" font-size="12">NY PM</text>
+  </g>
+
+  <!-- silver bullet windows -->
+  <g fill="#facc15">
+    <rect x="327" y="182" width="41" height="10" fill-opacity="0.6" />
+    <rect x="614" y="182" width="41" height="10" fill-opacity="0.6" />
+    <rect x="778" y="182" width="41" height="10" fill-opacity="0.6" />
+  </g>
+  <text x="450" y="205" text-anchor="middle" fill="#facc15" font-size="11">Silver Bullet windows (03–04, 10–11, 14–15)</text>
+
+  <!-- key time markers -->
+  <g stroke="#e5e7eb" stroke-opacity="0.55" stroke-dasharray="3,3">
+    <line x1="204" y1="70" x2="204" y2="120" />
+    <line x1="552" y1="70" x2="552" y2="120" />
+    <line x1="593" y1="70" x2="593" y2="120" />
+    <line x1="778" y1="70" x2="778" y2="120" />
+  </g>
+  <g fill="#e5e7eb" font-size="10" text-anchor="middle">
+    <text x="204" y="66">00:00</text>
+    <text x="552" y="66">08:30</text>
+    <text x="593" y="66">09:30</text>
+    <text x="778" y="66">14:00 FOMC</text>
+  </g>
+
+  <!-- axis labels -->
+  <g fill="#94a3b8" font-size="10" text-anchor="middle">
+    <text x="40" y="245">20:00</text>
+    <text x="204" y="245">00:00</text>
+    <text x="368" y="245">04:00</text>
+    <text x="532" y="245">08:00</text>
+    <text x="696" y="245">12:00</text>
+    <text x="860" y="245">16:00</text>
+  </g>
+
+  <text x="450" y="270" text-anchor="middle" fill="#64748b" font-size="10">Asian accumulation → London manipulation → NY AM distribution → lunch chop → NY PM continuation/reversal</text>
+</svg>

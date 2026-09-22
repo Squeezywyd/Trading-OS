@@ -1,0 +1,46 @@
+<svg viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg" font-family="ui-monospace, monospace">
+  <title>Premium, discount and the 62-79% OTE zone</title>
+  <rect x="1" y="1" width="798" height="448" rx="10" fill="#0b1220" stroke="#1e293b" stroke-width="2"/>
+  <text x="24" y="30" fill="#e5e7eb" font-size="16" font-weight="bold">Range: Premium / Equilibrium / Discount + OTE</text>
+
+  <!-- swing low to swing high leg, range 80..380 (top=high=80, bottom=low=380) -->
+  <!-- Premium zone: 80 to 230 (above EQ) -->
+  <rect x="60" y="80" width="500" height="150" fill="#ef4444" fill-opacity="0.08"/>
+  <!-- Discount zone: 230 to 380 (below EQ) -->
+  <rect x="60" y="230" width="500" height="150" fill="#22c55e" fill-opacity="0.08"/>
+  <!-- OTE band: 62%-79% of the leg measured from the low (380) up to high (80), so 62% => 380-0.62*300=196, 79% => 380-0.79*300=143.3 -->
+  <rect x="60" y="143" width="500" height="53" fill="#facc15" fill-opacity="0.22" stroke="#facc15" stroke-opacity="0.6"/>
+
+  <!-- axis lines -->
+  <line x1="60" y1="80" x2="560" y2="80" stroke="#ef4444" stroke-dasharray="5 4"/>
+  <text x="565" y="84" fill="#ef4444" font-size="11">100% swing high</text>
+  <line x1="60" y1="230" x2="560" y2="230" stroke="#e5e7eb" stroke-dasharray="5 4"/>
+  <text x="565" y="234" fill="#e5e7eb" font-size="11">50% equilibrium</text>
+  <line x1="60" y1="380" x2="560" y2="380" stroke="#22c55e" stroke-dasharray="5 4"/>
+  <text x="565" y="384" fill="#22c55e" font-size="11">0% swing low</text>
+  <line x1="60" y1="143" x2="560" y2="143" stroke="#facc15" stroke-opacity="0.8"/>
+  <text x="565" y="147" fill="#facc15" font-size="11">79%</text>
+  <line x1="60" y1="196" x2="560" y2="196" stroke="#facc15" stroke-opacity="0.8"/>
+  <text x="565" y="200" fill="#facc15" font-size="11">62%</text>
+  <line x1="60" y1="169" x2="560" y2="169" stroke="#facc15" stroke-dasharray="2 2"/>
+  <text x="565" y="173" fill="#facc15" font-size="11">70.5% sweet spot</text>
+
+  <text x="70" y="105" fill="#ef4444" font-size="12">PREMIUM (sell zone)</text>
+  <text x="70" y="355" fill="#22c55e" font-size="12">DISCOUNT (buy zone)</text>
+  <text x="70" y="165" fill="#facc15" font-size="12" font-weight="bold">OTE (62-79%)</text>
+
+  <!-- impulse leg candles (down move establishing the leg, low to high going bullish leg from low up) -->
+  <line x1="620" y1="90" x2="620" y2="370" stroke="#22c55e" stroke-width="2"/>
+  <rect x="608" y="120" width="24" height="220" fill="#22c55e" stroke="#22c55e"/>
+  <text x="600" y="385" fill="#94a3b8" font-size="10">impulse leg</text>
+
+  <!-- retrace into OTE then continuation -->
+  <line x1="680" y1="140" x2="680" y2="220" stroke="#ef4444" stroke-width="2"/>
+  <rect x="668" y="150" width="24" height="55" fill="#ef4444" stroke="#ef4444"/>
+  <circle cx="680" cy="175" r="5" fill="#facc15"/>
+  <text x="695" y="178" fill="#facc15" font-size="11">entry in OTE</text>
+
+  <line x1="740" y1="95" x2="740" y2="170" stroke="#22c55e" stroke-width="2"/>
+  <rect x="728" y="100" width="24" height="55" fill="#22c55e" stroke="#22c55e"/>
+  <text x="705" y="90" fill="#94a3b8" font-size="10">continuation → target 0%/-1</text>
+</svg>

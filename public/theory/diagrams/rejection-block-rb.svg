@@ -1,0 +1,54 @@
+<svg viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg" font-family="ui-monospace, monospace">
+  <title>Rejection block: the wick zone at a swing extreme</title>
+  <rect x="1" y="1" width="798" height="448" rx="10" fill="#0b1220" stroke="#1e293b" stroke-width="2"/>
+  <g stroke="#1e293b" stroke-opacity="0.4">
+    <line x1="30" y1="100" x2="770" y2="100"/>
+    <line x1="30" y1="170" x2="770" y2="170"/>
+    <line x1="30" y1="240" x2="770" y2="240"/>
+    <line x1="30" y1="310" x2="770" y2="310"/>
+  </g>
+  <text x="24" y="30" fill="#e5e7eb" font-size="16" font-weight="bold">Bearish Rejection Block</text>
+  <text x="24" y="48" fill="#94a3b8" font-size="12">Wick at a swing high shows where price was refused</text>
+
+  <!-- leg up into the high -->
+  <line x1="90" y1="220" x2="90" y2="280" stroke="#22c55e" stroke-width="2"/>
+  <rect x="78" y="225" width="24" height="45" fill="#22c55e" stroke="#22c55e"/>
+  <line x1="150" y1="180" x2="150" y2="240" stroke="#22c55e" stroke-width="2"/>
+  <rect x="138" y="185" width="24" height="45" fill="#22c55e" stroke="#22c55e"/>
+
+  <!-- the RB candle: long upper wick, small body -->
+  <line x1="210" y1="100" x2="210" y2="220" stroke="#22c55e" stroke-width="2"/>
+  <rect x="198" y="190" width="24" height="28" fill="#22c55e" stroke="#22c55e"/>
+  <text x="185" y="235" fill="#f59e0b" font-size="11">RB candle</text>
+
+  <!-- RB zone: body top (190) to wick high (100) -->
+  <rect x="195" y="100" width="500" height="90" fill="#f59e0b" fill-opacity="0.2" stroke="#f59e0b" stroke-opacity="0.6"/>
+  <line x1="195" y1="145" x2="695" y2="145" stroke="#facc15" stroke-dasharray="4 3"/>
+  <text x="700" y="105" fill="#f59e0b" font-size="11">RB zone</text>
+  <text x="700" y="149" fill="#facc15" font-size="11">50%</text>
+  <text x="700" y="188" fill="#94a3b8" font-size="10">body top</text>
+
+  <!-- small pullback -->
+  <line x1="270" y1="200" x2="270" y2="260" stroke="#ef4444" stroke-width="2"/>
+  <rect x="258" y="205" width="24" height="40" fill="#ef4444" stroke="#ef4444"/>
+
+  <!-- return into the wick zone -->
+  <line x1="450" y1="120" x2="450" y2="200" stroke="#22c55e" stroke-width="2"/>
+  <rect x="438" y="150" width="24" height="45" fill="#22c55e" stroke="#22c55e"/>
+  <text x="410" y="215" fill="#94a3b8" font-size="11">return into wick</text>
+  <circle cx="450" cy="145" r="5" fill="#facc15"/>
+  <text x="465" y="148" fill="#facc15" font-size="11">entry (50%)</text>
+
+  <!-- rejection down -->
+  <line x1="520" y1="150" x2="520" y2="300" stroke="#ef4444" stroke-width="2"/>
+  <rect x="508" y="190" width="24" height="110" fill="#ef4444" stroke="#ef4444"/>
+
+  <!-- stop above wick extreme -->
+  <line x1="30" y1="92" x2="770" y2="92" stroke="#ef4444" stroke-opacity="0.6" stroke-dasharray="2 3"/>
+  <text x="700" y="86" fill="#ef4444" font-size="11">stop above wick high</text>
+
+  <g font-size="11" fill="#e5e7eb">
+    <rect x="30" y="400" width="12" height="12" fill="#f59e0b" fill-opacity="0.4"/>
+    <text x="48" y="410">RB zone = body top → wick extreme (not the full body, like an OB)</text>
+  </g>
+</svg>

@@ -1,0 +1,64 @@
+<svg viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg" font-family="ui-monospace, monospace">
+  <title>Fair Value Gap formation and Inverse FVG flip</title>
+  <rect x="1" y="1" width="798" height="448" rx="10" fill="#0b1220" stroke="#1e293b" stroke-width="2"/>
+  <g stroke="#1e293b" stroke-opacity="0.4">
+    <line x1="30" y1="90" x2="770" y2="90"/>
+    <line x1="30" y1="150" x2="770" y2="150"/>
+    <line x1="30" y1="210" x2="770" y2="210"/>
+    <line x1="30" y1="270" x2="770" y2="270"/>
+    <line x1="30" y1="330" x2="770" y2="330"/>
+  </g>
+  <text x="24" y="30" fill="#e5e7eb" font-size="16" font-weight="bold">Bullish FVG forms, then fails into an Inverse FVG</text>
+
+  <!-- Left panel: FVG formation -->
+  <text x="60" y="60" fill="#94a3b8" font-size="12">1. Displacement leaves a gap</text>
+  <!-- Candle 1: down body, defines gap top with its high -->
+  <line x1="110" y1="150" x2="110" y2="230" stroke="#ef4444" stroke-width="2"/>
+  <rect x="98" y="165" width="24" height="45" fill="#ef4444" stroke="#ef4444"/>
+  <text x="80" y="245" fill="#94a3b8" font-size="11">C1</text>
+  <!-- Candle 2: big displacement candle -->
+  <line x1="170" y1="90" x2="170" y2="240" stroke="#22c55e" stroke-width="2"/>
+  <rect x="158" y="100" width="24" height="120" fill="#22c55e" stroke="#22c55e"/>
+  <text x="150" y="255" fill="#94a3b8" font-size="11">C2</text>
+  <!-- Candle 3: continuation, low above C1 high -->
+  <line x1="230" y1="70" x2="230" y2="140" stroke="#22c55e" stroke-width="2"/>
+  <rect x="218" y="78" width="24" height="45" fill="#22c55e" stroke="#22c55e"/>
+  <text x="210" y="150" fill="#94a3b8" font-size="11">C3</text>
+  <!-- FVG zone: C1 high (165) to C3 low (123) -->
+  <rect x="95" y="123" width="160" height="42" fill="#a78bfa" fill-opacity="0.22" stroke="#a78bfa" stroke-opacity="0.6"/>
+  <line x1="95" y1="144" x2="255" y2="144" stroke="#facc15" stroke-dasharray="4 3"/>
+  <text x="260" y="130" fill="#a78bfa" font-size="11">FVG</text>
+  <text x="260" y="148" fill="#facc15" font-size="11">CE (50%)</text>
+
+  <line x1="330" y1="20" x2="330" y2="430" stroke="#1e293b" stroke-width="2"/>
+
+  <!-- Right panel: IFVG flip -->
+  <text x="360" y="60" fill="#94a3b8" font-size="12">2. Body closes back through it = IFVG</text>
+  <rect x="350" y="123" width="160" height="42" fill="#a78bfa" fill-opacity="0.12" stroke="#a78bfa" stroke-opacity="0.4" stroke-dasharray="3 3"/>
+  <!-- old candles faded -->
+  <g opacity="0.35">
+    <rect x="353" y="165" width="24" height="45" fill="#ef4444" stroke="#ef4444"/>
+    <rect x="413" y="100" width="24" height="120" fill="#22c55e" stroke="#22c55e"/>
+    <rect x="473" y="78" width="24" height="45" fill="#22c55e" stroke="#22c55e"/>
+  </g>
+  <!-- reversal candle closing back through the gap -->
+  <line x1="540" y1="110" x2="540" y2="260" stroke="#ef4444" stroke-width="2"/>
+  <rect x="528" y="118" width="24" height="130" fill="#ef4444" stroke="#ef4444"/>
+  <text x="518" y="275" fill="#94a3b8" font-size="11">close &lt; CE</text>
+  <!-- retest candle rejecting from above -->
+  <line x1="610" y1="150" x2="610" y2="210" stroke="#ef4444" stroke-width="2"/>
+  <rect x="598" y="155" width="24" height="30" fill="#ef4444" stroke="#ef4444"/>
+  <text x="630" y="140" fill="#f472b6" font-size="11">retest → resistance</text>
+  <text x="360" y="300" fill="#e5e7eb" font-size="12">Old bullish FVG (support) now trades as</text>
+  <text x="360" y="318" fill="#e5e7eb" font-size="12">a bearish IFVG (resistance) on retest.</text>
+
+  <!-- Legend -->
+  <g font-size="11" fill="#e5e7eb">
+    <rect x="60" y="400" width="12" height="12" fill="#a78bfa" fill-opacity="0.4"/>
+    <text x="78" y="410">FVG zone</text>
+    <rect x="170" y="400" width="12" height="12" fill="none" stroke="#facc15"/>
+    <text x="188" y="410">Consequent encroachment (50%)</text>
+    <rect x="440" y="400" width="12" height="12" fill="#f472b6" fill-opacity="0.5"/>
+    <text x="458" y="410">IFVG retest = resistance/support</text>
+  </g>
+</svg>
