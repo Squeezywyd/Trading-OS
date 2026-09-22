@@ -1,18 +1,20 @@
 import type { LucideIcon } from "lucide-react";
-import { AnimatedNumber } from "./animated-number";
+import { AnimatedNumber, type NumberFormat } from "./animated-number";
 import { cn } from "@/lib/utils";
 
 export function StatCard({
   label,
   value,
-  formatter,
+  format,
+  suffix,
   icon: Icon,
   tone = "neutral",
   hint,
 }: {
   label: string;
   value: number;
-  formatter?: (n: number) => string;
+  format?: NumberFormat;
+  suffix?: string;
   icon?: LucideIcon;
   tone?: "profit" | "loss" | "neutral";
   hint?: string;
@@ -30,7 +32,7 @@ export function StatCard({
           tone === "loss" && "text-loss",
         )}
       >
-        <AnimatedNumber value={value} formatter={formatter} />
+        <AnimatedNumber value={value} format={format} suffix={suffix} />
       </p>
       {hint ? <p className="text-muted-foreground mt-1 text-xs">{hint}</p> : null}
     </div>

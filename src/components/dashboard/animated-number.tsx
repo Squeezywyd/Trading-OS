@@ -3,18 +3,35 @@
 import * as React from "react";
 import { animate, useReducedMotion } from "framer-motion";
 
+/** Server Components can't pass functions to Client Components (like this
+ * one) as props — only serializable values cross that boundary. Callers
+ * pass a `format` kind instead, and the actual formatter fn lives here. */
+export type NumberFormat = "usd" | "pct" | "r" | "decimal2" | "plain";
+
+const FORMATTERS: Record<NumberFormat, (n: number) => string> = {
+  usd: (n) => `${n < 0 ? "-" : ""}$${Math.abs(n).toLocaleString(undefined, { maximumFractionDigits: 0 })}`,
+  pct: (n) => `${n.toFixed(1)}%`,
+  r: (n) => `${n >= 0 ? "+" : ""}${n.toFixed(2)}R`,
+  decimal2: (n) => n.toFixed(2),
+  plain: (n) => `${n}`,
+};
+
 export function AnimatedNumber({
   value,
-  formatter,
+  format: formatKind,
+  suffix,
   className,
 }: {
   value: number;
-  formatter?: (n: number) => string;
+  format?: NumberFormat;
+  /** Appended after the formatted number, e.g. " Wins" for a streak. */
+  suffix?: string;
   className?: string;
 }) {
   const ref = React.useRef<HTMLSpanElement>(null);
   const prefersReducedMotion = useReducedMotion();
-  const format = formatter ?? ((n: number) => n.toLocaleString());
+  const baseFormat = formatKind ? FORMATTERS[formatKind] : (n: number) => n.toLocaleString();
+  const format = suffix ? (n: number) => `${baseFormat(n)} ${suffix}` : baseFormat;
 
   React.useEffect(() => {
     const node = ref.current;

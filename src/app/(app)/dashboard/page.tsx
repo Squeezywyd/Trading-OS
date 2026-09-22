@@ -33,8 +33,6 @@ const RANGE_DAYS: Record<string, number | null> = { "7d": 7, "30d": 30, "90d": 9
 
 const usd = (n: number) =>
   `${n < 0 ? "-" : ""}$${Math.abs(n).toLocaleString(undefined, { maximumFractionDigits: 0 })}`;
-const pct = (n: number) => `${n.toFixed(1)}%`;
-const rMult = (n: number) => `${n >= 0 ? "+" : ""}${n.toFixed(2)}R`;
 
 export default async function DashboardPage({
   searchParams,
@@ -99,58 +97,57 @@ export default async function DashboardPage({
             <StatCard
               label="Net P&L"
               value={kpis?.net_pnl ?? 0}
-              formatter={usd}
+              format="usd"
               icon={kpis && kpis.net_pnl >= 0 ? TrendingUp : TrendingDown}
               tone={kpis && kpis.net_pnl >= 0 ? "profit" : "loss"}
             />
-            <StatCard label="Win rate" value={kpis?.win_rate ?? 0} formatter={pct} icon={Target} />
+            <StatCard label="Win rate" value={kpis?.win_rate ?? 0} format="pct" icon={Target} />
             <StatCard
               label="Expectancy"
               value={kpis?.expectancy_r ?? 0}
-              formatter={rMult}
+              format="r"
               icon={Scale}
             />
             <StatCard
               label="Profit factor"
               value={kpis?.profit_factor ?? 0}
-              formatter={(n) => n.toFixed(2)}
+              format="decimal2"
               icon={Percent}
             />
             <StatCard
               label="Max drawdown"
               value={kpis?.max_drawdown ?? 0}
-              formatter={usd}
+              format="usd"
               tone="loss"
               icon={TrendingDown}
             />
             <StatCard
               label="Avg win"
               value={kpis?.avg_win_r ?? 0}
-              formatter={rMult}
+              format="r"
               tone="profit"
             />
             <StatCard
               label="Avg loss"
               value={kpis?.avg_loss_r ?? 0}
-              formatter={rMult}
+              format="r"
               tone="loss"
             />
             <StatCard
               label="Streak"
               value={kpis?.current_streak ?? 0}
-              formatter={(n) => `${n} ${kpis?.current_streak_type ?? ""}`}
+              suffix={kpis?.current_streak_type ?? ""}
               icon={Flame}
             />
             <StatCard
               label="Bias accuracy"
               value={biasAccuracy?.accuracy_pct ?? 0}
-              formatter={pct}
+              format="pct"
               icon={CalendarCheck}
             />
             <StatCard
               label="Rule breaks"
               value={kpis?.rule_break_count ?? 0}
-              formatter={(n) => `${n}`}
               tone={kpis && kpis.rule_break_count > 0 ? "loss" : "neutral"}
             />
           </div>
